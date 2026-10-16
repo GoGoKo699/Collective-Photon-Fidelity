@@ -17,7 +17,7 @@ Uniform attenuation preserves a vanishing fidelity when a macroscopic number of 
 The native source consists of $N$ identical two-level emitters, initially fully excited, coupled to one Markov output channel:
 
 $$
-L_{\mathrm{out}}=\sqrt{\Gamma}\,J_-,
+L_{\mathrm{out}}=\sqrt{\Gamma}J_-,
 \qquad
 J_-=\sum_{i=1}^{N}\sigma_i^-,
 \qquad
@@ -30,7 +30,7 @@ After $m$ photons have been emitted, the next emission rate is
 
 $$
 r_m=\Gamma(m+1)(N-m),
-\qquad 0\le m<N.
+\qquad 0\le m\lt N.
 $$
 
 The increasing collective factor near the beginning of the cascade produces the superradiant burst. The emitted photons also have correlated arrival times. Those correlations matter when asking whether the *whole pulse* occupies a single temporal mode.
@@ -42,18 +42,18 @@ For partial excitation, the source is a **symmetric Dicke state** with $n$ excit
 Let $b^\dagger(t)$ create an output photon at physical time $t$, with $[b(t),b^\dagger(s)]=\delta(t-s)$. A normalized, possibly complex temporal mode $f$ defines
 
 $$
-\int_0^\infty |f(t)|^2\,dt=1,
+\int_0^\infty |f(t)|^2dt=1,
 \qquad
-a_f^\dagger=\int_0^\infty f(t)b^\dagger(t)\,dt,
+a_f^\dagger=\int_0^\infty f(t)b^\dagger(t)dt,
 \qquad
 |n_f\rangle=\frac{(a_f^\dagger)^n}{\sqrt{n!}}|0\rangle.
 $$
 
-For a trace-one state $\rho_n$ in the $n$-photon sector, the quantity studied here is
+For a trace-one state $\rho_n$ in the sector containing $n$ photons, the quantity studied here is
 
 $$
 F^\star(\rho_n)
-=\sup_{\|f\|_2=1}\langle n_f|\rho_n|n_f\rangle.
+=\sup_{\Vert f\Vert_2=1}\langle n_f|\rho_n|n_f\rangle.
 $$
 
 For a pure state this is the squared overlap. The optimization includes every normalized temporal mode; it is not restricted to the most populated eigenmode of a first-order correlation function.
@@ -64,9 +64,9 @@ Three quantities need separate names:
 |---|---|
 | $p_n$ | Probability that the output contains exactly $n$ photons. |
 | $F^\star(\rho_n)$ | Best single-mode Fock fidelity of the normalized state in that sector. |
-| $Y_n^\star=p_nF^\star(\rho_n)$ | Unconditional overlap with the best $n$-photon single-mode target, per preparation attempt. |
+| $Y_n^\star=p_nF^\star(\rho_n)$ | Unconditional overlap with the best single-mode target containing $n$ photons, per preparation attempt. |
 
-The mean occupation fraction $\langle a_f^\dagger a_f\rangle/n$, the density-matrix purity $\operatorname{Tr}(\rho_n^2)$, and the fidelity defined above answer different questions.
+The mean occupation fraction $\langle a_f^\dagger a_f\rangle/n$, the density-matrix purity $\mathrm{Tr}(\rho_n^2)$, and the fidelity defined above answer different questions.
 
 All asymptotic statements concern growing system size under the stated assumptions. The notation $\Theta(g_N)$ means that positive, size-independent constants bound the quantity above and below by multiples of $g_N$ for sufficiently large size. It does not determine an exact prefactor.
 
@@ -78,7 +78,7 @@ For the pure output $\rho_N=|\Psi_N\rangle\langle\Psi_N|$ of the fully inverted 
 
 $$
 F_N^\star
-=\sup_{\|f\|_2=1}|\langle N_f|\Psi_N\rangle|^2
+=\sup_{\Vert f\Vert_2=1}|\langle N_f|\Psi_N\rangle|^2
 =\Theta(N^{-1/2}).
 $$
 
@@ -86,8 +86,8 @@ The theorem supplies bounds on the leading coefficient:
 
 $$
 \sqrt{2\pi}
-\le \liminf_{N\to\infty}\sqrt{N}\,F_N^\star
-\le \limsup_{N\to\infty}\sqrt{N}\,F_N^\star
+\le \liminf_{N\to\infty}\sqrt{N}F_N^\star
+\le \limsup_{N\to\infty}\sqrt{N}F_N^\star
 \le \frac{4\sqrt{2\pi}}{e}.
 $$
 
@@ -112,13 +112,13 @@ The theory note gives an explicit normalized trial pulse and finite-size lower b
 
 ### 2. Uniform attenuation and surviving photons
 
-Apply a uniform attenuator with transmission $0<\eta<1$ to the ideal $N$-photon field, with vacuum in the unused port. The attenuation acts identically on every temporal mode.
+Apply a uniform attenuator with transmission $0\lt \eta\lt 1$ to the ideal field of $N$ photons, with vacuum in the unused port. The attenuation acts identically on every temporal mode.
 
-Conditioned on exactly $k$ transmitted photons, the normalized output is the $k$-particle reduced density operator $\rho_N^{(k)}$ of the ideal field. Its optimized fidelity satisfies a universal bound
+Conditioned on exactly $k$ transmitted photons, the normalized output is the reduced density operator $\rho_N^{(k)}$ for $k$ particles of the ideal field. Its optimized fidelity satisfies a universal bound
 
 $$
 F_{N\to k}^\star
-:=\sup_{\|f\|_2=1}\langle k_f|\rho_N^{(k)}|k_f\rangle
+:=\sup_{\Vert f\Vert_2=1}\langle k_f|\rho_N^{(k)}|k_f\rangle
 \le \frac{C}{\sqrt{k}},
 \qquad 1\le k\le N.
 $$
@@ -138,7 +138,7 @@ $$
 Even when the target photon number and temporal mode may both be chosen, the unconditional optimum at fixed $\eta$ obeys
 
 $$
-\max_{0\le k\le N}\sup_{\|f\|_2=1}
+\max_{0\le k\le N}\sup_{\Vert f\Vert_2=1}
 \langle k_f|\mathcal L_\eta(\rho_N)|k_f\rangle
 =\Theta(N^{-1}).
 $$
@@ -149,7 +149,7 @@ These statements concern mode-independent attenuation. A mode-selective filter w
 
 ### 3. Detecting a prefix prepares a different source
 
-Start with the lossless native source. Detect and consume its first $r$ photons, immediately route the remaining field to the output, and use the $r$th-click time as the new time origin. For $r=0$, use the initial preparation time.
+Start with the lossless native source. Detect and consume its first $r$ photons, immediately route the remaining field to the output, and use the time of click number $r$ as the new time origin. For $r=0$, use the initial preparation time.
 
 With perfect detection, timing, and switching, the remaining emitters are exactly in the symmetric Dicke state with $N-r$ excitations. The record-aligned field therefore has
 
@@ -165,14 +165,14 @@ $$
 r=o(N)
 \quad\Longrightarrow\quad
 F_{\mathrm{prefix}}(N,r)
-=\Theta\!\left(\sqrt{\frac{r+1}{N}}\right).
+=\Theta\left(\sqrt{\frac{r+1}{N}}\right).
 $$
 
 Thus a sublinear prefix cannot maintain a nonzero limiting fidelity. Consuming a fixed fraction $r/N\to\alpha\in(0,1)$ permits
 
 $$
 \liminf F_{\mathrm{prefix}}(N,r)
-\ge e\,\alpha^{(1+\alpha)/[2(1-\alpha)]}.
+\ge e\alpha^{(1+\alpha)/[2(1-\alpha)]}.
 $$
 
 For example, consuming half the photons gives the **asymptotic lower bound**
@@ -190,7 +190,7 @@ This resource law applies to the specified prefix protocol. It does not classify
 
 #### Detection and switching costs
 
-Let $1\le r<N$. Suppose each diverted photon independently registers with efficiency $0<d\le1$, and routing begins a fixed delay $\Delta\ge0$ after the $r$th registered click. Assume otherwise ideal timestamps, no dark counts or other source loss, and continued native emission during the delay.
+Let $1\le r\lt N$. Suppose each diverted photon independently registers with efficiency $0\lt d\le1$, and routing begins a fixed delay $\Delta\ge0$ after the detector registers click number $r$. Assume otherwise ideal timestamps, no dark counts or other source loss, and continued native emission during the delay.
 
 For the predetermined target photon number $n=N-r$, the optimized yield per initial attempt, with the pulse referred to the actual switch time, is exactly
 
@@ -201,7 +201,7 @@ e^{-\Gamma(N-r)(r+1)\Delta}
 F_{N,N-r}^\star.
 $$
 
-Only branches with no missed prefix photon and no extra emission during the delay contain the nominal number of retained photons. Conditioning only on obtaining a trigger divides this yield by $\Pr[\operatorname{Bin}(N,d)\ge r]$.
+Only branches with no missed prefix photon and no extra emission during the delay contain the nominal number of retained photons. Conditioning only on obtaining a trigger divides this yield by $\Pr[\mathrm{Bin}(N,d)\ge r]$.
 
 For $r$ proportional to $N$, keeping the detection factor nonvanishing requires $r[-\ln d]=O(1)$, or $r(1-d)=O(1)$ near unit efficiency. When both the consumed and retained photon numbers are proportional to $N$, the delay factor requires $\Gamma N^2\Delta=O(1)$. The exact general condition is $\Gamma(N-r)(r+1)\Delta=O(1)$.
 
@@ -212,7 +212,7 @@ These costs belong to this stopping rule and predetermined photon count. Bufferi
 Add separate undesired channels
 
 $$
-L_i=\sqrt{\gamma}\,\sigma_i^-,
+L_i=\sqrt{\gamma}\sigma_i^-,
 \qquad
 \epsilon=\frac{\gamma}{\Gamma},
 $$
@@ -257,16 +257,16 @@ The constant-ratio formulas also apply when $\gamma(t)=\epsilon\Gamma(t)$ and em
 
 ### 5. Control restrictions and a coherent escape
 
-In the ideal lossless model, a lossless unitary change of temporal modes preserves the optimized fidelity. A common deterministic envelope $\Gamma(t)$ also preserves it when $\int_0^\infty\Gamma(t)\,dt=\infty$: it reparametrizes the clock through $\tau(t)=\int_0^t\Gamma(s)\,ds$.
+In the ideal lossless model, a lossless unitary change of temporal modes preserves the optimized fidelity. A common deterministic envelope $\Gamma(t)$ also preserves it when $\int_0^\infty\Gamma(t)dt=\infty$: it reparametrizes the clock through $\tau(t)=\int_0^t\Gamma(s)ds$.
 
-At fixed jump amplitudes, arbitrary diagonal Hamiltonians and transition phases cannot increase the optimum above the positive, phase-free output. The same inequality holds for every normalized $k$-particle reduced state. This includes emitter-only Hamiltonians that conserve excitation and preserve the symmetric spin sector, where each excitation subspace is one-dimensional.
+At fixed jump amplitudes, arbitrary diagonal Hamiltonians and transition phases cannot increase the optimum above the positive, phase-free output. The same inequality holds for every normalized reduced state of $k$ particles. This includes emitter-only Hamiltonians that conserve excitation and preserve the symmetric spin sector, where each excitation subspace is one-dimensional.
 
 For a general single-output Markov ladder, exact single-mode Fock emission requires a bosonic rate ladder and compatible phases:
 
 $$
 r_m(t)=(N-m)h(t),
 \qquad
-h(t)=\frac{|f(t)|^2}{\int_t^\infty |f(s)|^2\,ds}.
+h(t)=\frac{|f(t)|^2}{\int_t^\infty |f(s)|^2ds}.
 $$
 
 Shaped Fock emission from a bosonic oscillator is an established construction; see [Gough and Zhang](https://doi.org/10.1140/epjqt/s40507-015-0027-z). Here the criterion makes the role of the native Dicke matrix elements explicit.
@@ -287,7 +287,7 @@ $$
 =\frac{2H_N}{\Gamma(N+1)}.
 $$
 
-For controls that are exactly pure in the lossless model, adding independent local decay also bounds all-$N$ survival by $(1+\epsilon)^{-N}$.
+For controls that are exactly pure in the lossless model, adding independent local decay also bounds the survival of all $N$ photons by $(1+\epsilon)^{-N}$.
 
 The distinction between exact and approximate purity is essential. An explicit **abstract coherent excitation-dependent coupling** respects the same rate cap and achieves
 
@@ -295,7 +295,7 @@ $$
 F_N[f]\ge1-O(N^{-3}),
 \qquad
 \mathbb E T_{\mathrm{last}}
-=O\!\left(\frac{\ln N}{\Gamma N}\right).
+=O\left(\frac{\ln N}{\Gamma N}\right).
 $$
 
 It therefore retains the native asymptotic time order while approaching unit fidelity. With a fixed local-loss ratio, the construction also has an inverse-polynomial lower bound on all-photon acceptance and conditional fidelity tending to one.

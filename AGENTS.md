@@ -69,7 +69,12 @@ undertaken. Preserve the README's Purpose and contact statement.
 
 Use GitHub-native dollar-delimited mathematics in Markdown. Put display
 equations on their own lines with blank lines around them; keep equations out
-of headings. Check links and rendering when changing the README.
+of headings. Check links and inspect substantial mathematics in the actual
+hosted README or tutorial before declaring its presentation ready. Parser
+checks alone do not establish correct rendering. Look for rejected macros,
+unrendered inline expressions, lost inequalities, stray spacing punctuation,
+and collisions in tables. Treat any syntax correction as specific to that
+renderer; preserve the canonical LaTeX notation and mathematical meaning.
 
 Before merging scientific changes, run the verification command documented in
 the README. Rebuild the PDF when its source changes, inspect compilation
