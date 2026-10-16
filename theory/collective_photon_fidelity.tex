@@ -255,7 +255,7 @@ The source starts at rate \(N\) and accelerates to rates of order
 \(N^2\). The early waiting-time uncertainty is not erased by that
 acceleration. At a trial mode's median cut, a Fock pulse has a
 binomial count width of order \(\sqrt N\); Dicke emission has central
-count probabilities of order \(1/N\). This mismatch bounds the
+count probabilities at most of order \(1/N\). This mismatch bounds the
 affinity even after pulse optimization. The arrival-density divided
 by dwell-rate argument also applies to other radiative cascades,
 although it alone does not supply a matching lower exponent for
@@ -1273,6 +1273,8 @@ unit-rate exponentials \(E_m\), construct successive arrivals by
 \begin{equation}
  T_{m+1}=R_m^{-1}\bigl(R_m(T_m)+E_m\bigr),\qquad T_0=0.
 \end{equation}
+Here \(R_m^{-1}(x)=\inf\{t\ge0:R_m(t)\ge x\}\) is the
+generalized inverse, allowing intervals with zero rate.
 Each \(T_j\) is coordinatewise increasing in all the \(E_m\).
 Independent product measures are associated: two increasing
 functions have nonnegative covariance. This follows by the
