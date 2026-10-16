@@ -167,7 +167,7 @@ $$
 
 The receiver stores the selected mode's complete oscillator state. Orthogonal outgoing modes remain outside it. These are ideal transfer identities: a zero denominator requires the appropriate support limit, and a bounded physical coupling requires its own approximation analysis.
 
-**Conjugation when reading the anchor.** Its Eqs. (7) and (17) display $g_u=u^*/\sqrt{S_u}$ and $g_v=-v^*/\sqrt{C_v}$. The formulas above are derived for the explicitly defined jump coefficient $\lambda$. Translate each operator equation using that definition; do not identify every printed coupling symbol by an unchecked global substitution.
+**Conjugation when reading the anchor.** Its Eqs. (7) and (17) display $g_u=u^{\ast}/\sqrt{S_u}$ and $g_v=-v^{\ast}/\sqrt{C_v}$. The formulas above are derived for the explicitly defined jump coefficient $\lambda$. Translate each operator equation using that definition; do not identify every printed coupling symbol by an unchecked global substitution.
 
 For a simple phase check, take $0\lt\kappa$ and real $\omega$. The normalized modes $f(t)=\sqrt{\kappa}e^{-\kappa t/2}e^{-i\omega t}$ and $f(t)^*$ have identical intensities, but
 
