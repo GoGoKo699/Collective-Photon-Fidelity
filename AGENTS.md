@@ -83,3 +83,67 @@ breaks. Keep the compiled PDF synchronized with its source. Exclude temporary
 LaTeX products, caches, and local environments from version control.
 
 Keep changes scoped to this repository and the user's current task.
+
+## Learning map and tutoring
+
+The common understanding route is [learning/MILESTONES.md](learning/MILESTONES.md),
+with the notation and argument bridge in [learning/BRIDGE.md](learning/BRIDGE.md).
+[llms.txt](llms.txt) routes scientific questions to canonical sources. The
+educational anchor is Kiilerich and Mølmer, *Quantum interactions with pulses
+of radiation*, Physical Review A 102, 023717 (2020), especially Sections
+II A–C and III. Use that one anchor for teaching foundations and the project
+theory for its results; preserve the research bibliography for attribution.
+
+Maintain exactly 30 milestones, M01–M30, in the two phases
+background/preliminaries and narrative/innovation. Their targets and
+allocation follow the science. Explain changes to the map when the science
+changes, review the dependencies and both phase syntheses, and settle the
+revised map before teaching from it. Adjust explanations and practice to a
+learner while keeping the shared map stable. Keep learner attempts and
+progress in the teaching session rather than in the public map.
+
+Begin interactive teaching when the user requests a lesson. Repository
+maintenance or a request for an explanation does not itself start a quiz.
+For a requested milestone tutorial, use this protocol:
+
+- Give every round a Revise, Learn, Test sequence. Revision recalls the
+  relevant definitions, assumptions, and earlier results. Learning explains
+  the idea or addresses a specific misconception before the test.
+- Each milestone has one challenge with as many attempts as needed. Start
+  with a compact revision and explanation followed by two questions. Each
+  question has four options and exactly one correct answer. All answers in
+  the same attempt must be correct to pass.
+- Present challenge questions one at a time and give correctness feedback
+  after the complete set. Finish the set even if an earlier answer was wrong.
+  Use conceptual inferences, physical interpretation, limiting cases, and
+  resource accounting; require only minimal mental calculation. Prefer
+  clickable answer controls when available.
+- Supply the prerequisites without copying the test answer into the
+  explanation. Use plausible distractors and fresh applications on retries.
+  Replace ambiguous or unreadable questions without counting a presentation
+  defect as a conceptual error. If clickable selection is unavailable, state
+  that briefly and accept a minimal option selection.
+- After a failed challenge, give one to three targeted learning rounds.
+  Each has its own revision, explanation, and one-question test. Correct
+  and explain every learning-test answer immediately, including the last
+  answer in the learning block. These answers guide teaching without
+  changing the next challenge's length or passing the milestone.
+- Count completed failed challenges within the current milestone. The next
+  challenge has `min(2 + failed_challenges, 6)` fresh questions. At six,
+  further failures still lead to a learning block and a fresh six-question
+  attempt. Keep the all-correct passing rule and do not pool correct answers
+  across failed attempts. Use the milestone's intensity as guidance for
+  choosing one to three learning rounds, rather than extending a block
+  indefinitely.
+- A pass advances to the next milestone, which starts with two questions.
+  Preserve enough session state to resume an interrupted attempt: milestone,
+  round type, completed failed challenges, questions asked, and answers.
+  An unfinished challenge is not a failure; a continuation request is not
+  evidence of an answer or a pass.
+- Completion means all 30 milestones have been passed under this protocol.
+  State that scoped completion without adding a further examination or
+  claiming mastery of every technical detail or neighboring subject. Preserve
+  completed milestones rather than resetting them to prolong the course.
+
+Keep the scientific qualifications visible in the teaching material, and
+check substantial hosted mathematics when updating the map or bridge.

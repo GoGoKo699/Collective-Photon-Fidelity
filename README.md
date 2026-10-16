@@ -12,6 +12,8 @@ Uniform attenuation preserves a vanishing fidelity when a macroscopic number of 
 
 **Full mathematical reference:** [Theory note (PDF)](theory/collective_photon_fidelity.pdf) · [LaTeX source](theory/collective_photon_fidelity.tex)
 
+**Learning route:** [30-milestone map](learning/MILESTONES.md) · [Bridge from the educational anchor](learning/BRIDGE.md) · [LLM reading guide](llms.txt)
+
 ## Physical model
 
 The native source consists of $N$ identical two-level emitters, initially fully excited, coupled to one Markov output channel:
@@ -311,6 +313,16 @@ The lower bound uses the positive collective-emission wavefunction, an explicit 
 Uniform attenuation thins the cut counts through a hypergeometric distribution. An exact combinatorial identity carries the upper bound to the surviving photons. Prefix detection instead prepares a definite partial-excitation Dicke state at a recorded time, allowing the partial-source bounds to be applied directly.
 
 ## Reading order
+
+### Learning route
+
+Start with the [30-milestone map](learning/MILESTONES.md). Its 14 background/preliminary milestones establish the field, source, and proof tools; its 16 narrative/innovation milestones develop the bounds and resource laws. Each phase builds from individual ingredients to an integrated understanding. Every milestone states a conceptual target, its dependencies, and the relevant source material.
+
+The single educational anchor is **A. H. Kiilerich and K. Mølmer, “Quantum interactions with pulses of radiation,” Physical Review A 102, 023717 (2020)**. [Publisher](https://doi.org/10.1103/PhysRevA.102.023717) · [Open preprint](https://arxiv.org/abs/2003.04573). The [bridge guide](learning/BRIDGE.md) selects the relevant parts of Sections II–III, translates notation, and connects the output-mode framework to the collective-emission results proved here. Read those parts alongside the corresponding milestones; the scientific bibliography below remains the route for research attribution.
+
+The [LLM reading guide](llms.txt) maps questions to the canonical definitions, proofs, and numerical checks. The shared milestone map is separate from a learner's session progress; the [repository guidance](AGENTS.md#learning-map-and-tutoring) specifies how to teach a milestone when a lesson is requested.
+
+### Proof and verification route
 
 1. Read the model and fidelity definitions above to fix the source, target state, and conditioning convention.
 2. Open the [theory note](theory/collective_photon_fidelity.pdf) for the native-source proof, explicit trial pulse, and partial-excitation bounds.
