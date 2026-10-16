@@ -1,0 +1,1528 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=25mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,array,graphicx,xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,urlcolor=blue!55!black,citecolor=blue!45!black]{hyperref}
+\usepackage{fancyhdr}
+\hypersetup{pdftitle={Single-mode fidelity of collective photon emission},pdfauthor={Ruge Lin}}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small Single-mode fidelity of collective emission}
+\fancyhead[R]{\small Ruge Lin}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\setlength{\parskip}{5pt}
+\setlength{\parindent}{0pt}
+\allowdisplaybreaks[1]
+\raggedbottom
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newcommand{\E}{\mathbb E}
+\newcommand{\Prob}{\mathbb P}
+\newcommand{\GE}{\Gamma_{\!E}}
+\newcommand{\HH}{\mathsf H}
+\newcommand{\KL}{D}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\Fock}[2]{\lvert #1_{#2}\rangle}
+\newcommand{\dd}{\,\mathrm d}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\Bin}{\operatorname{Bin}}
+\newcommand{\HG}{\operatorname{HG}}
+\newcommand{\sech}{\operatorname{sech}}
+\title{Single-mode fidelity of collective photon emission}
+\author{Ruge Lin}
+\date{17 October 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+For ideal Dicke emission from \(N\) initially excited emitters, the
+maximum squared overlap with any single-temporal-mode \(N\)-photon
+Fock state is \(\Theta(N^{-1/2})\). An explicit normalized pulse and
+a relative-entropy inequality give the lower bound; temporal photon
+counts give an upper bound uniform over all pulse shapes. The argument
+extends to \(n\) symmetric excitations in \(M\) emitters: near full
+inversion the fidelity is \(\Theta(\sqrt{(M-n+1)/M})\), whereas it
+tends to one when \(n/M\to0\). Uniform attenuation retains a
+conditional ceiling of order \(k^{-1/2}\) for \(k\) surviving photons,
+and at fixed transmission the best unconditional photon-number and
+mode target has yield \(\Theta(N^{-1})\). Independent local decay
+instead produces a different exact conditional kernel and a
+polynomial all-photon yield at fixed loss ratio. Diagonal collective
+phases and common rate shaping cannot improve the ideal modal
+fidelity. Detecting and consuming a prefix gives an exact resource
+law, with explicit detection-efficiency and switching-delay costs.
+Exact Fock emission from a coherent Markov ladder requires bosonic
+rates and separable phases; under a native-rate cap exact purity is
+slow. This exactness restriction is singular: a capped,
+excitation-dependent coherent coupling achieves fidelity tending to
+one at the native order of completion time, with polynomial
+all-photon acceptance at fixed local loss. The control construction
+specifies a mathematical coupling model rather than an experimental
+implementation.
+\end{abstract}
+
+\section{Model, observables, and main result}
+\label{sec:model}
+
+We consider identical two-level emitters in their fully symmetric spin
+sector, vacuum input, one desired Markov output, and complete eventual
+emission. The native coupling is \(L_{\mathrm{out}}=\sqrt{\Gamma}J_-\),
+with \(\Gamma>0\). Unless a section explicitly introduces loss or
+control, there is no pumping, dephasing, feedback, or other output
+channel. These are the ideal collective-emission assumptions used in
+the waveguide descriptions of Refs.~\cite{paulisch,perarnau}.
+
+Let \(b^\dagger(t)\) create an output photon, with
+\([b(t),b^\dagger(s)]=\delta(t-s)\). For a normalized temporal mode,
+\begin{equation}
+ a_f^\dagger=\int_0^\infty f(t)b^\dagger(t)\dd t,\qquad
+ \Fock{n}{f}=\frac{(a_f^\dagger)^n}{\sqrt{n!}}|0\rangle,\qquad
+ F^\star(\rho_n)=\sup_{\norm{f}_2=1}\langle n_f|\rho_n|n_f\rangle.
+ \label{eq:fidelitydef}
+\end{equation}
+Here \(\rho_n\) has trace one in the \(n\)-photon sector. All
+fidelities are squared overlaps, or their mixed-state extension
+against a pure target. The optimization includes arbitrary complex
+pulse shapes and is not restricted to the most populated one-photon
+mode. If the sector occurs with probability \(p_n\), its unconditional
+target-state yield is \(Y_n^\star=p_nF^\star(\rho_n)\). Sector
+probability, conditional mode fidelity, and yield are separate
+quantities.
+
+For the lossless native and partial-source calculations in
+Sections~\ref{sec:wave}--\ref{sec:two}, time is measured in units
+\(\Gamma^{-1}\), and \(t\) denotes the dimensionless coordinate.
+Rescaling a physical mode by
+\(\widetilde f(\tau)=\Gamma^{-1/2}f(\tau/\Gamma)\) preserves its norm
+and all overlaps. Later loss and control sections use physical
+\(t\), with dimensionless \(\tau=\Gamma t\) stated when needed.
+Euler's gamma function is denoted \(\GE\), to distinguish it from
+the emission rate.
+
+\begin{theorem}[Fully inverted source]
+For the ideal output \(\rho_N=|\Psi_N\rangle\langle\Psi_N|\) of \(N\) fully excited emitters, write \(F_N^\star=F^\star(\rho_N)\). Then
+\begin{equation}\boxed{
+ \sqrt{2\pi}\le\liminf_{N\to\infty}\sqrt N F_N^\star
+ \le\limsup_{N\to\infty}\sqrt N F_N^\star
+ \le\frac{4\sqrt{2\pi}}{e}.}
+\label{eq:main}
+\end{equation}
+Consequently $F_N^\star=\Theta(N^{-1/2})$. The two endpoint constants are approximately $2.506628$ and $3.688548$.
+\end{theorem}
+Equation~\eqref{eq:main} determines the power, not the existence or value of a limiting prefactor. The displayed asymptotic constants are not finite-$N$ upper and lower inequalities without their limiting qualifications.
+
+\section{Exact emitted wavefunction}
+\label{sec:wave}
+Use the normalized symmetric-coordinate convention
+\begin{equation}
+ |\Psi_N\rangle=\frac1{\sqrt{N!}}\int_{[0,\infty)^N}
+ \psi_N(\boldsymbol t)\prod_{i=1}^N b^\dagger(t_i)\,d^N t,
+ \qquad\int|\psi_N|^2\,d^Nt=1.
+\end{equation}
+The successive waiting times between emissions are independent exponentials with rates
+\begin{equation}\lambda_j=j(N-j+1),\qquad j=1,\ldots,N.\end{equation}
+For ordered times $0=t_0<t_1<\cdots<t_N$,
+\begin{align}
+ \sum_{j=1}^N\lambda_j(t_j-t_{j-1})
+ &=\sum_{j=1}^N(2j-N)t_j\\
+ &=\sum_i t_i+\sum_{i<j}|t_i-t_j|.
+\end{align}
+Since $\prod_j\lambda_j=(N!)^2$, the standard cascade amplitude~\cite{perarnau} becomes
+\begin{equation}\boxed{
+ \psi_N(\boldsymbol t)=\sqrt{N!}\exp\!\left[-\frac12\sum_i t_i-
+ \frac12\sum_{i<j}|t_i-t_j|\right].}
+\label{eq:wave}
+\end{equation}
+Indeed the ordered-domain density is $N!|\psi_N|^2=(N!)^2\exp[-\sum_j\lambda_j(t_j-t_{j-1})]$, which integrates to one over that domain. The symmetric density $P_N=|\psi_N|^2$ therefore integrates to one over the full orthant. Positivity permits replacing $f$ by $|f|$ without decreasing the overlap.
+
+\section{Constructive lower bound}
+\label{sec:lower}
+\subsection{A classical affinity identity}
+For a probability density $p$ on the half-line, put $f=\sqrt p$ and $Q_p(\boldsymbol t)=\prod_i p(t_i)$. The amplitude is exactly the classical Hellinger affinity,
+\begin{equation}
+ \langle N_f|\Psi_N\rangle=\int\sqrt{P_NQ_p}\,d^Nt
+ =\E_{Q_p}\exp\!\left[\tfrac12\log(P_N/Q_p)\right].
+\end{equation}
+Jensen's inequality, followed by squaring, gives
+\begin{equation}\boxed{F_N^\star\ge F_N[f]\ge\exp[-\KL(Q_p\Vert P_N)].}\end{equation}
+From Eq.~\eqref{eq:wave},
+\begin{equation}
+ \KL(Q_p\Vert P_N)=N\int p\log p+N\E_p t+
+ \frac{N(N-1)}2\E_p|t-s|-\log N!.
+\label{eq:kl}
+\end{equation}
+No approximation or independence assumption about the actual output is used: only the trial density $Q_p$ is a product.
+
+\subsection{An explicit normalized pulse}
+Choose
+\begin{equation}\boxed{
+ p_N(t)=\frac{N^2e^{Nt}}{(e^{Nt}+N-1)^2},\qquad
+ f_N(t)=\frac{Ne^{Nt/2}}{e^{Nt}+N-1},\qquad t\ge0.}
+\label{eq:pulse}
+\end{equation}
+Its cumulative distribution is $(e^{Nt}-1)/(e^{Nt}+N-1)$, so normalization is exact. For $N>1$,
+\begin{align}
+ \E t&=\frac{\log N}{N-1},&
+ \E|t-s|&=\frac{2[(N-1)-\log N]}{(N-1)^2},\\
+ \int p_N\log p_N&=\frac{N\log N}{N-1}-2.
+\end{align}
+Substitution yields
+\begin{equation}
+ \KL(Q_{p_N}\Vert P_N)=\frac{N^2\log N}{N-1}-N-\log N!,
+\end{equation}
+and the exact finite-$N$ lower bound
+\begin{equation}\boxed{
+ F_N^\star\ge L_N:=\frac{e^N N!}{N^{N^2/(N-1)}}\quad(N\ge2).}
+\label{eq:lower}
+\end{equation}
+For $N=1$, Eq.~\eqref{eq:pulse} reduces to $p_1(t)=e^{-t}$ and $F_1^\star=1$. Stirling's expansion gives
+\begin{equation}
+ L_N=\sqrt{\frac{2\pi}{N}}\exp\!\left[-\frac{\log N}{N-1}
+ +\frac1{12N}+O(N^{-3})\right],
+\end{equation}
+which proves the lower half of Eq.~\eqref{eq:main}.
+
+\subsection{Optimality within the relative-entropy variational principle}
+The pulse in Eq.~\eqref{eq:pulse} globally minimizes Eq.~\eqref{eq:kl}, although it need not maximize the true fidelity. Let $X(u)$ be the quantile of $p$, $v(u)=X'(u)>0$, and $x_0=X(0)\ge0$. For an absolutely continuous quantile with finite objective,
+\begin{equation}
+ \frac{\KL(Q_p\Vert P_N)+\log N!}{N}
+ =x_0+\int_0^1[A_N(u)v(u)-\log v(u)]\,du,
+\end{equation}
+where $A_N(u)=(1-u)[1+(N-1)u]$. The integrand is strictly convex in $v$ and minimized pointwise at $v=1/A_N$; $x_0$ is minimized at zero. Integration gives
+\begin{equation}
+ X_N(u)=\frac1N\log\frac{1+(N-1)u}{1-u},
+\end{equation}
+equivalent to Eq.~\eqref{eq:pulse}. Quantile jumps and singular increments add the nonnegative Stieltjes term $\int A_N\,dX_{\rm singular}$ and cannot improve the infimum. This establishes the same minimum for density-derived generalized quantiles with finite objective.
+
+\section{Uniform upper bound from temporal photon counts}
+\label{sec:upper}
+\subsection{Every trial pulse supplies its own median cut}
+Fix any normalized mode $f$. There is a time $T$ with $\int_0^T|f(t)|^2dt=1/2$. The number $m$ of photons before $T$ in $|N_f\rangle$ has distribution
+\begin{equation}b_N(m)=2^{-N}\binom Nm.\end{equation}
+Let $p_m(T)$ be the corresponding Dicke-output count distribution. Projection onto the orthogonal count sectors, followed by Cauchy--Schwarz within each sector, implies
+\begin{equation}
+ |\langle N_f|\Psi_N\rangle|
+ \le\sum_{m=0}^N\sqrt{p_m(T)b_N(m)}.
+\label{eq:countfidelity}
+\end{equation}
+The cut may depend on $f$ because the following estimates are uniform in $T$. This is an analysis device, not an assumption of feedback during emission.
+
+\subsection{Arrival times bound count probabilities}
+The emitted count is a pure-birth process with rates $r_m=(m+1)(N-m)$ from $m$ to $m+1$. This reduction is standard Dicke dynamics~\cite{malz}. Write $T_m$ for the $m$th arrival and $h_m$ for its density. For $1\le m\le N-1$,
+\begin{equation}
+ p_m(T)=\int_0^T h_m(s)e^{-r_m(T-s)}\,ds
+ \le\frac{\norm{h_m}_\infty}{r_m}.
+\label{eq:dwell}
+\end{equation}
+$T_m$ contains the independent first waiting time ${\rm Exp}(N)$, so convolution gives $\norm{h_m}_\infty\le N$. Already,
+\begin{equation}
+ p_m(T)\le\min\!\left\{1,\frac{N}{(m+1)(N-m)}\right\}.
+\end{equation}
+Together with Eq.~\eqref{eq:countfidelity}, this gives an explicit finite-$N$ upper bound by inserting the displayed expression for $1\le m<N$ and the bound one for $m=0,N$, and clipping the resulting squared sum at one.
+
+To improve the asymptotic constant, fix $K\ge2$ independently of $N$. For $m\ge K$, convolution contraction gives $\norm{h_m}_\infty\le\norm{h_K}_\infty$. The density of $NT_K$ converges uniformly to that of $Y_K=\sum_{j=1}^K{\rm Exp}(j)$. This follows from convergence of each fixed-rate exponential density in both $L^1$ and $L^\infty$, followed by convolution. $Y_K$ has the distribution of the maximum of $K$ independent unit-rate exponentials, hence
+\begin{equation}
+ h_{Y_K}(s)=Ke^{-s}(1-e^{-s})^{K-1},\qquad
+ \norm{h_{Y_K}}_\infty=c_K=(1-1/K)^{K-1}.
+\end{equation}
+Therefore $\norm{h_K}_\infty=N[c_K+o_N(1)]$. Uniformly over $T$ and $|m-N/2|\le N^{2/3}$,
+\begin{equation}
+ p_m(T)\le\frac{4c_K+o_N(1)}{N}.
+\end{equation}
+
+\subsection{The binomial width determines the exponent}
+A binomial Chernoff bound and Cauchy--Schwarz give
+\begin{equation}
+ \sum_{|m-N/2|>N^{2/3}}\sqrt{p_m(T)b_N(m)}
+ \le\sqrt2\,e^{-N^{1/3}}.
+\end{equation}
+Stirling's formula with Gaussian tail control gives
+\begin{equation}
+ \sum_{m=0}^N\sqrt{b_N(m)}=(2\pi N)^{1/4}[1+o(1)].
+\end{equation}
+Combining the central and tail estimates in Eq.~\eqref{eq:countfidelity}, uniformly over every $f$,
+\begin{equation}
+ F_N^\star\le\frac{4c_K\sqrt{2\pi}+o_N(1)}{\sqrt N}.
+\end{equation}
+First take $N\to\infty$ at each fixed $K$, then $K\to\infty$. Since $c_K\to e^{-1}$, the upper half of Eq.~\eqref{eq:main} follows. No exchange of a growing-$K$ limit is needed.
+
+
+\subsection{Physical origin of the count bound}
+The source starts at rate \(N\) and accelerates to rates of order
+\(N^2\). The early waiting-time uncertainty is not erased by that
+acceleration. At a trial mode's median cut, a Fock pulse has a
+binomial count width of order \(\sqrt N\); Dicke emission has central
+count probabilities of order \(1/N\). This mismatch bounds the
+affinity even after pulse optimization. The arrival-density divided
+by dwell-rate argument also applies to other radiative cascades,
+although it alone does not supply a matching lower exponent for
+another source.
+
+\section{Dependence on the initial excitation}
+\label{sec:partial}
+
+Let \(M\) be the total number of emitters and \(n\) the excitation
+number of an initially symmetric Dicke state. Put \(a=M-n+1\).
+Exciting an arbitrary subset of \(n\) emitters in a larger array
+does not in general prepare this state or preserve the symmetric
+sector. In the lossless symmetric problem the emitted-count rates
+are \(r_j=(n-j)(a+j)\), \(j=0,\ldots,n-1\). Their product is
+\(n!\GE(M+1)/\GE(a)\), so the same ordered-coordinate normalization
+as in Section~\ref{sec:wave} gives
+\begin{equation}
+ P_{M,n}(\boldsymbol t)=\frac{\GE(M+1)}{\GE(a)}
+ \exp\!\left[-a\sum_i t_i-\sum_{i<j}|t_i-t_j|\right].
+ \label{eq:affine}
+\end{equation}
+Its positive square root is the normalized emitted amplitude.
+
+\subsection{An exact product relative-entropy bound}
+
+The quantile argument of Section~\ref{sec:lower} now has
+\(A(u)=(1-u)[a+(n-1)u]\), and its initial-offset term is \(a x_0\).
+The pointwise minimizing derivative is again \(X'(u)=1/A(u)\).
+For \(n>1\),
+\begin{align}
+ X_{M,n}(u)&=\frac1M
+ \ln\frac{a+(n-1)u}{a(1-u)},\\
+ p_{M,n}(t)&=\frac{aM^2e^{Mt}}{[ae^{Mt}+n-1]^2}.
+ \label{eq:trial}
+\end{align}
+The cumulative distribution of this pulse is
+\(a(e^{Mt}-1)/(ae^{Mt}+n-1)\). Thus normalization is exact.
+Its product relative entropy with respect to \eqref{eq:affine} is
+\begin{equation}
+ \boxed{
+ D_{M,n}=n\left[\frac{M\ln M-a\ln a}{n-1}-1\right]
+ -\ln\GE(M+1)+\ln\GE(a),\qquad
+ F_{M,n}^\star\ge e^{-D_{M,n}}.}
+ \label{eq:D}
+\end{equation}
+The formula follows by substituting the quantile into the same
+strictly convex functional used for the fully inverted source.
+It is the global minimum of the product relative entropy, not
+necessarily the pulse maximizing the actual fidelity. For \(n=1\),
+the density is \(p(t)=M e^{-Mt}\), and fidelity one is exact.
+
+Equation~\eqref{eq:affine}, its normalization, and the variational
+calculation also hold for integer \(n\) and any real \(a\ge1\),
+with \(M=n+a-1\). In that extension \(M\) is a distribution parameter,
+not a fractional emitter number. This will be needed for local-loss
+conditioning in Section~\ref{sec:local}.
+
+\subsection{Uniform control in the dilute regime}
+
+Set \(b=n-1\). Equation~\eqref{eq:D} is equivalently
+\begin{equation}
+ D_{M,n}
+ =n\left[\frac1b\int_a^M\ln x\dd x
+ -\frac1{b+1}\sum_{j=0}^b\ln(a+j)\right].
+ \label{eq:gridentropy}
+\end{equation}
+The equally weighted, endpoint-inclusive grid dominates the uniform
+interval in convex order. To see this, a convex function's integral
+average is at most its composite trapezoidal average. If its grid
+values are \(g_0,\ldots,g_b\), the grid average minus the trapezoidal
+average is
+\begin{equation}
+ \frac{(b-1)(g_0+g_b)/2-\sum_{j=1}^{b-1}g_j}{b(b+1)}\ge0,
+\end{equation}
+where the inequality follows by bounding the internal values by
+the endpoint chord. For \(x^2/2\), the grid average minus the
+continuous average is \(b/12\). Comparing the curvature of
+\(\ln x\) with \(-M^{-2}\) and \(-a^{-2}\), or applying convex
+order to \(\ln x+x^2/(2a^2)\) and concave order to
+\(\ln x+x^2/(2M^2)\), therefore gives
+\begin{equation}
+ \boxed{\frac{n(n-1)}{12M^2}\le D_{M,n}\le
+ \frac{n(n-1)}{12a^2}.}
+ \label{eq:dilutebound}
+\end{equation}
+Consequently,
+\begin{equation}
+ F_{M,n}^\star\ge
+ \exp\!\left[-\frac{n(n-1)}{12(M-n+1)^2}\right],
+ \qquad n/M\to0\ \Longrightarrow\ F_{M,n}^\star\to1.
+ \label{eq:dilutefidelity}
+\end{equation}
+This remains uniform when \(n\to\infty\). The qualitative
+weak-excitation route to Fock emission is established in
+Ref.~\cite{liu}; \eqref{eq:dilutefidelity} quantifies the present
+optimized-pulse problem.
+
+\subsection{Fixed excitation fraction and uniform near-inversion scaling}
+
+Write the Stirling remainder as
+\begin{equation}
+ \ln\GE(x)=(x-\tfrac12)\ln x-x+\tfrac12\ln(2\pi)+R(x),
+ \qquad 0<R(x)<\frac1{12x},\quad x\ge1.
+\end{equation}
+Using \(\GE(M+1)=M\GE(M)\), Eq.~\eqref{eq:D} rearranges exactly to
+\begin{equation}
+ D_{M,n}=\frac12\ln\frac Ma-1+
+ \frac a{n-1}\ln\frac Ma+R(a)-R(M).
+ \label{eq:stirlingD}
+\end{equation}
+In particular, \(\ln(1+z)/z\le1\) gives the real-\(a\) bound
+\begin{equation}
+ F_{M,n}^\star\ge e^{-D_{M,n}}
+ \ge e^{-1/(12a)}\sqrt{\frac aM}.
+ \label{eq:realalower}
+\end{equation}
+If \(n/M\to\rho\in(0,1)\), Eq.~\eqref{eq:stirlingD} gives
+\begin{equation}
+ \liminf F_{M,n}^\star\ge
+ e(1-\rho)^{(2-\rho)/(2\rho)}>0.
+ \label{eq:fraction}
+\end{equation}
+This is a lower bound, not the exact limiting fidelity. At
+\(\rho=1/2\) it is \(e/(2\sqrt2)=0.961057757\ldots\).
+
+\begin{theorem}[Near complete inversion, including real \(a\)]
+\label{thm:partial}
+For integer \(n\), real \(a\ge1\), and \(M=n+a-1\), along every
+sequence \(M\to\infty\) with \(a=o(M)\),
+\begin{equation}
+ \boxed{F_{M,n}^\star=\Theta\!\left(\sqrt{\frac aM}\right).}
+ \label{eq:realascaling}
+\end{equation}
+The implicit constants may be chosen uniformly along these
+sequences. For physical integer \(M,n\), this is the symmetric
+partial-source fidelity.
+\end{theorem}
+\begin{proof}
+The lower estimate is uniform by \eqref{eq:realalower}.
+For the upper estimate take \(J=\max(2,\lceil a\rceil)\), which is
+\(o(n)\). Each of the first \(J\) waiting rates is at most \(2na\).
+The sum \(T_J\) of those waits therefore has characteristic function
+bounded by
+\begin{equation}
+ |\widehat h_J(\omega)|
+ \le[1+(\omega/(2na))^2]^{-J/2}.
+\end{equation}
+Fourier inversion gives
+\begin{align}
+ \norm{h_J}_\infty
+ &\le\frac{na}{\sqrt\pi}
+ \frac{\GE((J-1)/2)}{\GE(J/2)}
+ \le\frac{na}{\sqrt{J-1}}
+ \le\sqrt2\,n\sqrt a.
+ \label{eq:fourierbound}
+\end{align}
+The middle inequality is the beta-integral bound
+\(\int_{\mathbb R}(1+x^2)^{-J/2}\dd x\le\pi/\sqrt{J-1}\);
+it follows from the Wallis gamma-ratio inequality and is equality
+at \(J=2\). Convolution with later waits does not increase the
+density supremum. The dwell bound \eqref{eq:dwell} now yields
+\begin{equation}
+ p_m(T)\le
+ \frac{\sqrt2\,n\sqrt a}{(n-m)(a+m)},\qquad m\ge J.
+\end{equation}
+For \(n/4\le m\le3n/4\) this is \(O(\sqrt a/n)\).
+At the median of an arbitrary trial pulse, the target count is
+\(\Bin(n,1/2)\). Its square-root probabilities sum to
+\(O(n^{1/4})\); the contribution outside the stated central
+interval is exponentially small by Cauchy--Schwarz and the
+binomial tail bound. Equation~\eqref{eq:countfidelity} therefore
+gives \(F_{M,n}^\star=O(\sqrt{a/n})\).
+Since \(n/M\to1\), this proves \eqref{eq:realascaling}.
+\end{proof}
+
+The trial lower bound has more explicit constants. If
+\(a\to\infty\) while \(a=o(M)\), \eqref{eq:stirlingD} gives
+\(e^{-D_{M,n}}=[e+o(1)]\sqrt{a/M}\). If \(a\) is fixed,
+\begin{equation}
+ \sqrt M\,e^{-D_{M,n}}\longrightarrow
+ \sqrt{2\pi}\frac{a^a e^{1-a}}{\GE(a)}.
+ \label{eq:fixedalower}
+\end{equation}
+These are asymptotics of the analytic lower bound, not asserted
+optimal-fidelity prefactors. They include the fully inverted
+case \(a=1\). At the opposite extreme \(n/a\to0\),
+\eqref{eq:realalower} also implies fidelity tending to one.
+
+\section{Exact optimal fidelity for two photons}
+\label{sec:two}
+For $N=2$, $\psi_2(t,s)=\sqrt2e^{-\max(t,s)}$ is a positive symmetric integral kernel. Its eigenvalue equation differentiates to
+\begin{equation}f''+f'+\frac{\sqrt2}{\lambda}e^{-t}f=0,\qquad f'(0)=0.\end{equation}
+Decay at infinity selects the Bessel solution. If $j_{0,1}$ is the first positive zero of $J_0$,
+\begin{equation}\boxed{
+ F_2^\star=\frac{32}{j_{0,1}^4}=0.956787875131927\ldots,\qquad
+ f_2^\star(t)=\frac{e^{-t/2}J_1(j_{0,1}e^{-t/2})}{J_1(j_{0,1})}.}
+\end{equation}
+The pulse is exactly normalized. The first zero gives the largest kernel eigenvalue $4\sqrt2/j_{0,1}^2$.
+
+\section{Uniform attenuation: surviving photons retain a modal ceiling}
+\label{sec:attenuation}
+
+Let \(\mathcal L_\eta\) be uniform, mode-independent attenuation of the
+ideal output, with vacuum in the unused port and \(0<\eta<1\).
+The number \(K_{\mathrm{out}}\) of transmitted photons is binomial:
+\begin{equation}
+ \Prob(K_{\mathrm{out}}=k)=B_{N,\eta}(k)
+ =\binom Nk\eta^k(1-\eta)^{N-k}.
+ \label{eq:binomialloss}
+\end{equation}
+Conditioned on \(k\), the temporal state is the normalized
+\(k\)-particle reduced density operator \(\rho_N^{(k)}\). This follows
+by applying the same beam splitter to each particle coordinate:
+choosing the transmitted labels gives the binomial coefficient, and
+tracing the other port traces the remaining coordinates. Write
+\(F_{N\to k}^\star=F^\star(\rho_N^{(k)})\).
+
+\begin{theorem}[Uniform survivor bound]
+There is a universal \(C<\infty\) such that
+\(F_{N\to k}^\star\le C/\sqrt{k}\) for all \(N\ge k\ge1\).
+More precisely, along every sequence \(N\ge k\to\infty\),
+\begin{equation}
+ \limsup \sqrt{k}\,F_{N\to k}^\star
+ \le\frac{4\sqrt{2\pi}}e.
+ \label{eq:survivor}
+\end{equation}
+For a fixed retained fraction \(k/N\to\eta_0\in(0,1]\),
+\(F_{N\to k}^\star=\Theta(N^{-1/2})\).
+\end{theorem}
+
+\begin{proof}
+Let \(p_m(T)\) be the probability of \(m\) original photons before
+a dimensionless cut \(T\). Section~\ref{sec:upper} already establishes
+the arrival-density and dwell estimate
+\begin{equation}
+ p_m(T)\le\frac{N}{(m+1)(N-m)}
+ \le\frac{N}{m(N-m)},\qquad 1\le m<N.
+ \label{eq:entrydwell}
+\end{equation}
+The retained early count has the hypergeometric mixture
+\begin{equation}
+ q_j(T)=\sum_{m=0}^N p_m(T)
+ \underbrace{\frac{\binom mj\binom{N-m}{k-j}}{\binom Nk}}
+ _{\HG(N,m,k,j)}.
+ \label{eq:hypergeom}
+\end{equation}
+For \(1\le j<k\), the kernel vanishes at \(m=0,N\). The identities
+\(\binom mj/m=\binom{m-1}{j-1}/j\) and its complementary version,
+followed by Vandermonde convolution, give
+\begin{align}
+ \sum_{m=1}^{N-1}\frac{\HG(N,m,k,j)}{m(N-m)}
+ &=\frac{\binom{N-1}{k-1}}
+ {j(k-j)\binom Nk}
+ =\frac{k}{N j(k-j)},\\
+ q_j(T)&\le\frac{k}{j(k-j)}.
+ \label{eq:thinningbound}
+\end{align}
+This estimate is uniform in \(T,N,k\).
+
+For any proposed mode choose a median time \(T\) of \(|f|^2\).
+The target \(\Fock{k}{f}\) has cut-count law
+\(b_j=\binom kj2^{-k}\). Monotonicity of fidelity under this
+measurement implies
+\begin{equation}
+ \langle k_f|\rho_N^{(k)}|k_f\rangle
+ \le\left(\sum_{j=0}^k\sqrt{q_j(T)b_j}\right)^2.
+ \label{eq:measurement}
+\end{equation}
+On \(|j-k/2|\le k^{2/3}\), Eq.~\eqref{eq:thinningbound} is at most
+\((4+o(1))/k\). Stirling's formula gives
+\(\sum_j\sqrt{b_j}\sim(2\pi k)^{1/4}\). Outside this window, the
+affinity contribution is at most the square root of the binomial
+tail probability, by Cauchy--Schwarz, and is exponentially small in
+\(k^{1/3}\). This proves a universal \(O(k^{-1/2})\) bound.
+
+For the stated prefactor, Section~\ref{sec:upper} proves that
+the density supremum of the first fixed \(J\ge2\) arrivals is
+\(N[c_J+o_N(1)]\), where \(c_J=(1-1/J)^{J-1}\).
+Thus the numerator \(N\) in \eqref{eq:entrydwell} can be replaced by
+\(N[c_J+o_N(1)]\) whenever \(m\ge J\). For central retained
+\(j\ge J\), every contributing \(m\) is at least \(J\), so the same
+Vandermonde identity applies. Equation~\eqref{eq:measurement} yields
+\(\limsup\sqrt{k}F_{N\to k}^\star\le4c_J\sqrt{2\pi}\).
+Since \(N\ge k\to\infty\), the error is uniform along every stated
+sequence. Taking \(J\to\infty\) gives \eqref{eq:survivor}.
+
+For the lower bound, the falling-factorial occupation identity is
+\begin{equation}
+ \langle k_f|\rho_N^{(k)}|k_f\rangle
+ =\left\langle\frac{(\hat n_f)_k}{(N)_k}\right\rangle
+ \ge\langle N_f|\rho_N|N_f\rangle.
+ \label{eq:rdmlower}
+\end{equation}
+The contribution from occupation \(n_f=N\) is one and all other
+terms are nonnegative. Optimize and apply \eqref{eq:main}.
+For \(k\) proportional to \(N\), the two orders match.
+\end{proof}
+
+\begin{corollary}[Optimize both output photon number and mode]
+At fixed \(0<\eta<1\),
+\begin{equation}
+ \max_{0\le k\le N}\sup_f
+ \langle k_f|\mathcal L_\eta(\rho_N)|k_f\rangle
+ =\Theta(N^{-1}).
+ \label{eq:anynumber}
+\end{equation}
+If all \(N\) photons are required instead, the yield is
+\(\eta^NF_N^\star=\Theta(\eta^N/\sqrt N)\).
+\end{corollary}
+\begin{proof}
+In a fixed bulk interval around \(\eta N\), the binomial point
+probability is \(O(N^{-1/2})\) and the conditional fidelity is
+\(O(N^{-1/2})\). Outside that interval the point probability is
+exponentially small. For the reverse inequality choose a modal
+binomial count, whose probability is \(\Theta(N^{-1/2})\), and use
+\eqref{eq:rdmlower} with the full-source trial mode.
+\end{proof}
+
+A parasitic \emph{collective} channel \(\sqrt{\kappa}J_-\) is equivalent
+to this beam-splitter loss after a clock rescaling, with
+\(\eta=\Gamma/(\Gamma+\kappa)\). A time- or frequency-selective
+filter is not uniform attenuation and is not covered by this theorem.
+
+\section{Independent local decay and the cost of strong conditioning}
+\label{sec:local}
+
+Now add independent channels
+\(L_i=\sqrt{\gamma}\,\sigma_i^-\), one for each emitter, with constant
+\(\gamma\ge0\), and define \(\epsilon=\gamma/\Gamma\).
+With no pumping, observing all \(N\) desired photons means that no
+local jump occurred. The \(N\)-photon sector is pure: its local
+environment is vacuum and the emitters end in their ground state.
+It can be identified retrospectively by destructive total counting.
+A usable herald that leaves the photons available requires an
+additional nondestructive success flag or suitable monitoring of the
+undesired environment.
+
+\begin{proposition}[Exact all-photon sector]
+Put \(a=1+\epsilon\) and \(M=N+a-1\). The sector probability is
+\begin{equation}
+ p_0=\prod_{j=1}^N\frac{j}{j+\epsilon}
+ =\frac{\GE(N+1)\GE(1+\epsilon)}{\GE(N+1+\epsilon)}.
+ \label{eq:localprob}
+\end{equation}
+Its unnormalized symmetric amplitude and normalized density are
+\begin{align}
+ \psi_{\mathrm{un}}(\boldsymbol\tau)
+ &=\sqrt{N!}\,
+   e^{-a\sum_i\tau_i/2-\sum_{i<j}|\tau_i-\tau_j|/2},\\
+ P_{\mathrm{cond}}(\boldsymbol\tau)
+ &=\frac{\GE(N+a)}{\GE(a)}
+   e^{-a\sum_i\tau_i-\sum_{i<j}|\tau_i-\tau_j|}.
+ \label{eq:localkernel}
+\end{align}
+The physical-time amplitude additionally has the Jacobian factor
+\(\Gamma^{N/2}\).
+\end{proposition}
+\begin{proof}
+Before desired jump \(j\), there are \(q=N-j+1\) excitations.
+The desired rate is \(\Gamma jq\), and the sum of the local rates is
+\(\gamma q\). The next jump is desired with probability
+\(j/(j+\epsilon)\); its waiting time, independent of that jump
+identity, has rate \(\Gamma q(j+\epsilon)\). Multiplying these
+probabilities proves \eqref{eq:localprob}. Along a history with no
+local jump, the integrated excitation number is \(\sum_i t_i\).
+The no-local-jump propagator consequently multiplies the ideal
+amplitude by \(e^{-\gamma\sum_i t_i/2}\), proving the first line.
+Dividing its squared modulus by \eqref{eq:localprob} gives the
+second line. Equivalently the normalized ordered waits have
+dimensionless rates \((N-j+1)(a+j-1)\).
+\end{proof}
+
+The competing-rate, no-jump-product treatment of local decay is
+used by Paulisch \emph{et al.} \cite{paulisch}. Its exact gamma
+quotient supplies the success probability and normalization for
+the optimized temporal-mode fidelity analyzed here.
+
+\begin{corollary}[Conditional scaling and fixed-loss target yield]
+For every sequence \(a=1+\epsilon\ge1\) with \(a=o(N)\),
+\begin{equation}
+ F_{\mathrm{cond}}^\star
+ =\Theta\!\left(\sqrt{\frac aN}\right),
+ \label{eq:localconditionalscaling}
+\end{equation}
+with uniform implicit constants. At fixed \(\epsilon\ge0\),
+\begin{equation}
+ p_0\sim\GE(1+\epsilon)N^{-\epsilon},\qquad
+ Y_N^\star=p_0F_{\mathrm{cond}}^\star
+ =\Theta(N^{-\epsilon-1/2}).
+ \label{eq:fixedlossyield}
+\end{equation}
+\end{corollary}
+\begin{proof}
+The normalized kernel \eqref{eq:localkernel} is precisely
+\eqref{eq:affine} with \(n=N\), \(a=1+\epsilon\), and
+\(M=N+a-1\). The real-\(a\) theorem of Section~\ref{sec:partial}
+therefore gives the conditional scaling, with
+\(M/N\to1\) in this regime. The fixed-\(\epsilon\) gamma-ratio
+asymptotic in \eqref{eq:localprob} gives the sector probability,
+and multiplying proves the target-yield law.
+\end{proof}
+
+The unconditional optimized yield is nonincreasing in \(\epsilon\).
+Indeed an optimal mode for the nonnegative kernel can be chosen
+nonnegative, and increasing \(\epsilon\) decreases every such
+unnormalized overlap pointwise. No corresponding monotonicity of
+the normalized conditional fidelity is assumed.
+
+\begin{corollary}[Strong conditioning has an exponential cost]
+If \(\epsilon=cN\), with fixed \(c>0\), then
+\begin{align}
+ \liminf F_{\mathrm{cond}}^\star
+ &\ge e\left(\frac c{1+c}\right)^{c+1/2}, \label{eq:strongF}\\
+ p_0&\sim\sqrt{\frac{2\pi Nc}{1+c}}
+ \left[\frac{c^c}{(1+c)^{1+c}}\right]^N. \label{eq:strongP}
+\end{align}
+More generally, keeping this native source's conditional fidelity
+bounded below by a positive constant requires
+\(\epsilon=\Omega(N)\), and hence exponentially small acceptance.
+If \(\epsilon/N\to\infty\), the conditional fidelity tends to one.
+\end{corollary}
+\begin{proof}
+For \(\epsilon=cN\), Eq.~\eqref{eq:stirlingD} tends to
+\((c+\tfrac12)\ln[(1+c)/c]-1\); exponentiating proves
+\eqref{eq:strongF}. Stirling's formula in \eqref{eq:localprob}
+gives \eqref{eq:strongP}. If \(\epsilon\) were not \(\Omega(N)\),
+a subsequence would have \(a/N\to0\), contradicting
+\eqref{eq:realascaling}. When \(\epsilon\ge cN\), monotonicity of
+\(p_0\) gives an exponential upper bound using \eqref{eq:strongP}.
+Finally \(a/N\to\infty\) makes the lower bound
+\eqref{eq:realalower} tend to one.
+\end{proof}
+
+At \(\epsilon=N\), these statements read
+\(p_0=\binom{2N}{N}^{-1}\sim\sqrt{\pi N}\,4^{-N}\) and
+\(\liminf F_{\mathrm{cond}}^\star\ge e/(2\sqrt2)
+=0.961057757\ldots\).
+For size-dependent \(\epsilon\), the exact gamma quotient must be
+used outside the stated asymptotic regimes.
+
+Local atomic loss is not uniform optical attenuation. After a local
+jump the emitter state can leave the symmetric sector, and the
+environment carries atom-specific information. For example, at
+\(N=2\) the desired photon-number probabilities are
+\begin{equation}
+ \Prob(K_{\mathrm{out}}=2)=\frac2{(1+\epsilon)(2+\epsilon)},\quad
+ \Prob(K_{\mathrm{out}}=1)=\frac{2\epsilon}{(1+\epsilon)(2+\epsilon)},
+ \quad
+ \Prob(K_{\mathrm{out}}=0)=\frac{\epsilon}{2+\epsilon}.
+\end{equation}
+To obtain them, after a first local jump decompose the remaining
+one-excitation mixture equally into its symmetric bright and
+antisymmetric dark states; only the bright part can emit into
+\(J_-\). At \(\epsilon=1\) all three probabilities are \(1/3\),
+which is not a two-photon binomial law. The survivor theorem of
+Section~\ref{sec:attenuation} therefore does not apply to the
+fewer-than-\(N\) sectors of local atomic loss.
+
+The gamma-quotient formulas also extend to
+\(\gamma(t)=\epsilon\Gamma(t)\) with constant ratio and complete
+emission, by using \(\tau=\int_0^t\Gamma(s)\dd s\). If
+\(\Gamma(t)\) is shaped while physical \(\gamma\) stays fixed,
+the factor \(e^{-\gamma\sum_i t_i/2}\) remains in physical time;
+the constant-ratio formulas cannot be substituted without a new
+calculation.
+
+\section{Controls that cannot improve the modal fidelity}
+\label{sec:phases}
+
+Label the symmetric ladder by the emitted count \(m=0,\ldots,N\).
+Consider a single coherent output and a diagonal Hamiltonian,
+\begin{equation}
+ L(t)=\sum_{m=0}^{N-1}\sqrt{r_m(t)}e^{i\theta_m(t)}
+ |m+1\rangle\langle m|,\qquad
+ H(t)=\sum_{m=0}^{N}E_m(t)|m\rangle\langle m|.
+ \label{eq:ladder}
+\end{equation}
+We set \(\hbar=1\). Every Hamiltonian that preserves both excitation
+number and the fully symmetric spin sector has this diagonal
+form, because each excitation sector of that spin representation
+is one-dimensional. This statement does not cover Hamiltonians
+that mix spin sectors or introduce a cavity, memory, or other
+ancilla.
+
+\begin{proposition}[Phase removal and scalar rate shaping]
+At fixed rates \(r_m(t)\), removing the Hamiltonian and jump phases
+cannot decrease the optimized full-photon fidelity or the optimized
+fidelity of any normalized \(k\)-particle reduced state.
+For native rates \(r_m(t)=\kappa(t)(m+1)(N-m)\), common deterministic
+shaping with \(\int_0^\infty\kappa(t)\dd t=\infty\) leaves those
+optimized fidelities unchanged.
+\end{proposition}
+\begin{proof}
+Let \(\psi_0\ge0\) be the phase-free amplitude. Equation
+\eqref{eq:ladder} changes it only to
+\(\psi_H(\boldsymbol t)=\psi_0(\boldsymbol t)e^{i\Phi(\boldsymbol t)}\).
+For retained variables \(\boldsymbol t\) and traced variables
+\(\boldsymbol z\),
+\begin{align}
+ F_k(H;f)
+ &=\int\dd\boldsymbol z\,
+ \left|\int\psi_H(\boldsymbol t,\boldsymbol z)
+                \prod_{i=1}^k f(t_i)^*\dd\boldsymbol t\right|^2\\
+ &\le\int\dd\boldsymbol z\,
+ \left[\int\psi_0(\boldsymbol t,\boldsymbol z)
+                \prod_{i=1}^k |f(t_i)|\dd\boldsymbol t\right]^2
+ =F_k(0;|f|).
+ \label{eq:phaserm}
+\end{align}
+For \(k=N\) there are no traced variables. Optimization proves
+the phase claim, including after uniform attenuation.
+
+Let \(\tau(t)=\int_0^t\kappa(s)\dd s\). The map
+\begin{equation}
+ (U_\kappa f)(t)=\sqrt{\kappa(t)}\,f(\tau(t))
+ \label{eq:isometry}
+\end{equation}
+is a one-photon isometry, and acts identically on every emitted
+coordinate. The transformed field and all its reduced states lie
+in its range, so optimization over all physical modes gives the
+same fidelity as before the transformation. Partial tracing
+commutes with this common isometry. This proves the rate claim.
+\end{proof}
+
+Arbitrary functions of \(J_z\), including nonlinear collective
+phases within this ladder, are covered by \eqref{eq:phaserm}.
+Combining them with common rate shaping cannot remove
+\eqref{eq:main} or \eqref{eq:survivor}. The same invariance
+holds for any common lossless one-photon unitary. Independent
+local loss at a fixed physical rate changes the problem, as the
+last paragraph of Section~\ref{sec:local} explains.
+
+\subsection{Ideal all-photon mode filtering}
+For an ideal filter retaining one normalized temporal mode \(f\)
+and rejecting its orthogonal complement, the probability that
+all \(N\) photons are retained is
+\(|\langle N_f|\Psi_N\rangle|^2\). On that event the retained
+state is \(\Fock{N}{f}\). Optimization gives
+\(F_N^\star=\Theta(N^{-1/2})\) for the fully inverted source.
+This equality follows by projecting onto occupation \(n_f=N\).
+It gives an all-photon extraction probability, distinct from a
+deterministic source guarantee. A usable herald must identify
+success without consuming the desired retained photons; the
+projection probability alone does not supply such an apparatus.
+
+\section{Detect a prefix: an exact resource and imperfection law}
+\label{sec:prefix}
+
+Start with the lossless native source. Detect and consume its first
+\(r\) photons, \(0\le r<N\), and immediately route all later photons
+to the retained output. Use the \(r\)th-click time as the new time
+origin; for \(r=0\), use the preparation time.
+
+\begin{proposition}[Prefix identity]
+With perfect detection, time resolution, and switching, the
+record-aligned retained field has exactly the partial-source state
+with \(M=N\), \(n=N-r\), \(a=r+1\). Hence
+\begin{equation}
+ F_{\mathrm{prefix}}(N,r)=F_{N,N-r}^\star.
+ \label{eq:prefixidentity}
+\end{equation}
+In particular, for \(r=o(N)\),
+\begin{equation}
+ F_{\mathrm{prefix}}(N,r)
+ =\Theta\!\left(\sqrt{\frac{r+1}{N}}\right).
+ \label{eq:prefixlaw}
+\end{equation}
+If \(r/N\to\alpha\in(0,1)\), then
+\begin{equation}
+ \liminf F_{\mathrm{prefix}}(N,r)
+ \ge e\,\alpha^{(1+\alpha)/[2(1-\alpha)]}.
+ \label{eq:prefixfraction}
+\end{equation}
+\end{proposition}
+\begin{proof}
+Between clicks the symmetric ladder state acquires a scalar
+no-jump factor; each click applies \(J_-\). After \(r\) desired
+jumps the normalized state is the symmetric Dicke state with
+\(N-r\) excitations, independent of all earlier waiting times.
+The Markov property and stationary coupling make the future field
+relative to that click precisely the partial-source output.
+The remaining assertions follow from Section~\ref{sec:partial}. No favorable timing record is selected: in the ideal
+model the \(r\)th click eventually occurs with probability one.
+\end{proof}
+
+A sublinear consumed prefix cannot keep the fidelity bounded away
+from zero. A macroscopic prefix permits a nonzero limiting
+fidelity while retaining a macroscopic photon number.
+For \(\alpha=1/2\), the explicit lower bound is
+\(e/(2\sqrt2)=0.961057757\ldots\), not the exact optimal fidelity.
+If \(N-r=o(N)\), the dilute-source bound implies fidelity tending
+to one. At finite size with \(N-r>1\), one may use
+\(e^{-D_{N,N-r}}\). For one retained photon the fidelity is exactly
+one. A simpler sufficient bound, valid also in that case, is
+\begin{equation}
+ F_{\mathrm{prefix}}(N,r)\ge
+ \exp\!\left[-\frac{(N-r)(N-r-1)}{12(r+1)^2}\right].
+\end{equation}
+Ignoring the recorded origin produces a mixture of temporal
+translations, a different target problem. This protocol consumes
+the prefix; it is not a nondestructive measurement on the original
+\(N\)-photon state, nor an optimality theorem for all adaptive controls.
+
+\begin{proposition}[Exact nominal-target detection and latency cost]
+Let \(r\ge1\), detector efficiency \(0<d\le1\), and a deterministic
+delay \(\Delta\ge0\) between the \(r\)th detected click and routing.
+Each prefix photon is independently detected, no other source
+loss is present, and native emission continues during the delay.
+For the predetermined target photon number \(n=N-r\), the optimized
+record-aligned yield per initial trial is exactly
+\begin{equation}
+ Y_{N-r}^{\mathrm{nom}}(d,\Delta)
+ =d^r e^{-\Gamma(N-r)(r+1)\Delta}F_{N,N-r}^\star.
+ \label{eq:prefixcost}
+\end{equation}
+Conditioning the ensemble on a trigger divides this by
+\(\Prob[\Bin(N,d)\ge r]\).
+\end{proposition}
+\begin{proof}
+If \(S\) photons have actually been emitted at the \(r\)th detected
+click, then
+\begin{equation}
+ \Prob(S=s,\mathrm{trigger})
+ =\binom{s-1}{r-1}d^r(1-d)^{s-r},\qquad r\le s\le N.
+\end{equation}
+Summing gives the stated trigger probability. Only \(S=r\) can
+leave the nominal \(N-r\) photons, and that event has probability
+\(d^r\). From this post-click level, the next waiting rate is
+\(\Gamma(N-r)(r+1)\). Keeping the same nominal number during the
+delay requires no additional emission, with probability equal to
+the exponential factor in \eqref{eq:prefixcost}. Conditioned on no
+such jump, the normalized spin state is unchanged. Its future
+field, referred to the switch time, is the same partial source.
+Every other branch is orthogonal to the nominal photon-number
+target, so multiplication gives the exact result.
+\end{proof}
+
+For \(r=\Theta(N)\), fixed \(d<1\) gives an exponential
+nominal-yield penalty. To keep the detection factor nonvanishing
+requires \(r[-\ln d]=O(1)\), equivalently \(r(1-d)=O(1)\) near
+unit efficiency. When both \(r\) and \(N-r\) are proportional to
+\(N\), the delay factor requires
+\(\Gamma N^2\Delta=O(1)\); in general the exact condition is
+\(\Gamma(N-r)(r+1)\Delta=O(1)\). The corresponding \(o(1)\) conditions
+make the penalties tend to one. These statements apply to this
+stopping rule and predetermined target. Extra number information,
+accepting several output counts, buffering, or stopping emission
+during the delay changes the protocol and its resource accounting.
+
+\section{Exact single-mode ladders and an exact-purity time penalty}
+\label{sec:exact}
+
+We return to the coherent ladder \eqref{eq:ladder}, with locally
+integrable rates, vacuum input, and complete emission. No extra
+environment records its excitation-dependent control.
+For a normalized target pulse \(p(t)=|f(t)|^2\), define its
+survival \(S(t)=1-\int_0^t p(s)\dd s\) and hazard
+\(h(t)=p(t)/S(t)\) where \(S(t)>0\).
+
+\begin{theorem}[Exact Fock criterion within a Markov ladder]
+The output is exactly \(\Fock{N}{f}\), up to a global phase, if and
+only if on reachable times and levels
+\begin{equation}
+ r_m(t)=(N-m)h(t),\qquad
+ \phi_m(t)=\arg f(t)+c_m\pmod{2\pi},
+ \label{eq:exactcriterion}
+\end{equation}
+where \(c_m\) are constants and
+\begin{equation}
+ \phi_m(t)=\theta_m(t)
+ -\int_0^t[E_m(s)-E_{m+1}(s)]\dd s .
+ \label{eq:phase}
+\end{equation}
+The rate equality holds almost everywhere at every reachable time,
+including pulse gaps where \(h=0\). The phase equality is required
+only where \(f\ne0\).
+When its cumulative probability is strictly between zero and one,
+every level is reachable and the rate equality applies to every
+\(m=0,\ldots,N-1\).
+\end{theorem}
+\begin{proof}
+In an \(N\)-photon Fock mode the detection times are independent
+draws from \(p\). Given \(m\) arrivals by time \(t\), the hazard of
+the next is \((N-m)h(t)\). The physical ladder hazard is \(r_m(t)\).
+Equality of the joint density therefore forces the first condition.
+All levels have positive binomial probability when the cumulative
+probability lies in \((0,1)\). Conversely, those hazards generate
+the independent order-statistic law, so the positive amplitude
+equals the target amplitude.
+
+For ordered times \(0<t_1<\cdots<t_N\), the product of jump phases
+and diagonal propagators has phase
+\(\sum_{j=1}^N\phi_{j-1}(t_j)\), up to a global final-state phase.
+To equal the target, its difference from
+\(\sum_j\arg f(t_j)\) must be constant on the ordered support.
+Varying one ordered coordinate at a time implies the second
+condition almost everywhere; the constants are consistent across
+overlapping ordered neighborhoods. The condition is sufficient
+by multiplication. Support gaps and times after release impose
+only the corresponding reachable-state requirements.
+\end{proof}
+
+For stationary positive rates and phases removed, the criterion
+reduces to \(r_m=\kappa(N-m)\), with
+\(f(t)=\sqrt{\kappa}e^{-\kappa t/2}\). A formal realization is
+\begin{equation}
+ L_{\mathrm{lin}}(t)
+ =\sqrt{h(t)}\,J_-[N-\hat n+1]^{-1/2},
+ \label{eq:linearjump}
+\end{equation}
+where \(\hat n\) is the current excitation number and the right
+factor acts first. Its matrix element is \(\sqrt{h(t)n}\).
+This is a truncated bosonic annihilation ladder. Bosonic
+Fock-state release and pulse synthesis are established prior
+constructions \cite{gough,brown,pfaff}; Eq.~\eqref{eq:linearjump}
+identifies the coupling required inside this spin ladder.
+Measuring the count and updating a scalar rate is not automatically
+equivalent: an extra history record can destroy temporal coherence.
+
+For reference, a stationary positive ladder has the following
+exact overlap with the exponential comparison mode:
+\begin{equation}
+ F_{\exp}(\kappa)=
+ \prod_{m=0}^{N-1}
+ \left[\frac{2\sqrt{r_m\kappa(N-m)}}{r_m+\kappa(N-m)}\right]^2.
+ \label{eq:stationaryoverlap}
+\end{equation}
+It follows by integrating the square root of each pair of
+exponential waiting densities. Writing
+\(r_m=\kappa(N-m)e^{\xi_m}\) gives
+\(F_{\exp}=\prod_m\sech^2(\xi_m/2)\). Thus small independent
+relative mismatches accumulate quadratically. This is a
+comparison-mode formula, not a necessary error budget for the
+fully optimized fidelity.
+
+\begin{proposition}[Exact-purity penalty under a native-rate cap]
+Assume the control can only attenuate native rates:
+\begin{equation}
+ 0\le r_m(t)\le\Gamma(m+1)(N-m).
+ \label{eq:ratecap}
+\end{equation}
+If its lossless output is an exact single-mode Fock state, then
+\(h(t)\le\Gamma\) and
+\begin{equation}
+ \E T_{\mathrm{last}}\ge\frac{\HH_N}{\Gamma},
+ \qquad \HH_N=\sum_{j=1}^N\frac1j.
+ \label{eq:exactslow}
+\end{equation}
+Constant \(h=\Gamma\) attains this bound. Native emission has
+\begin{equation}
+ \E T_{\mathrm{last}}^{\mathrm{native}}
+ =\frac{2\HH_N}{\Gamma(N+1)}.
+ \label{eq:nativetime}
+\end{equation}
+If independent local loss \(\gamma\) is added to these same
+lossless-exact controls, their all-desired sector remains
+single-mode, but its probability is at most
+\((1+\gamma/\Gamma)^{-N}\).
+\end{proposition}
+\begin{proof}
+The \(m=0\) constraint in \eqref{eq:ratecap}, together with
+\eqref{eq:exactcriterion}, gives \(h\le\Gamma\).
+The zero-count state remains reachable whenever \(S(t)>0\), so
+it cannot be removed from this argument by appealing to typical
+counts. The cumulative hazard obeys
+\(\int_0^t h\le\Gamma t\). Coupling each of the \(N\) independent
+target arrival times to a unit-rate exponential shows that it is
+no earlier than an exponential of rate \(\Gamma\). The expected
+maximum of the latter is \(\HH_N/\Gamma\), proving
+\eqref{eq:exactslow}. Summing the native waiting means
+\(\{\Gamma j(N-j+1)\}^{-1}\) proves \eqref{eq:nativetime}.
+
+With local loss, the unnormalized one-photon mode is
+\begin{equation}
+ v_\gamma(t)=e^{i\arg f(t)}\sqrt{h(t)}
+ e^{-\frac12\int_0^t h(s)\dd s-\gamma t/2},\qquad
+ q=\norm{v_\gamma}_2^2.
+\end{equation}
+The all-desired field is
+\(q^{N/2}\Fock{N}{v_\gamma/\sqrt q}\), with probability \(q^N\).
+Since its lossless arrival time is stochastically no earlier than
+\(\operatorname{Exp}(\Gamma)\),
+\(q=\E e^{-\gamma t}\le\Gamma/(\Gamma+\gamma)\).
+Equality holds for constant \(h=\Gamma\).
+\end{proof}
+
+The exact lossless-purity constraint therefore incurs at least
+a factor \((N+1)/2\) in mean completion time under the cap.
+This statement does not classify controls designed only to purify
+a lossy postselected sector, whose conditioning changes transition
+hazards. It also does not extend to approximate purity. The next
+construction shows why that distinction is essential.
+
+\section{A capped coherent control with asymptotically unit fidelity}
+\label{sec:capped}
+
+Choose an even integer \(4\le K<N\) and set
+\(T_0=-\Gamma^{-1}\ln(1-K/N)\). Define a target cumulative
+distribution and its hazard by
+\begin{align}
+ u(t)&=
+ \begin{cases}
+  1-e^{-\Gamma t},&0\le t\le T_0,\\[2pt]
+  \displaystyle\left[1+\frac{N-K}{K}
+  e^{-\Gamma N(t-T_0)/2}\right]^{-1},&t\ge T_0,
+ \end{cases} \label{eq:cappedcdf}\\
+ h(t)&=\frac{u'(t)}{1-u(t)}
+ =\begin{cases}\Gamma,&t<T_0,\\
+ \Gamma Nu(t)/2,&t>T_0.
+ \end{cases} \label{eq:cappedhazard}
+\end{align}
+The target mode is \(f=\sqrt{u'}\). Its ideal Fock ladder would
+have rates \(s_m=(N-m)h\). Instead implement the single coherent
+jump with zero phases and rates
+\begin{equation}
+ r_m^C(t)=(N-m)\min\{h(t),\Gamma(m+1)\}.
+ \label{eq:cappedrates}
+\end{equation}
+They obey
+\begin{equation}
+ \Gamma(N-m)\le r_m^C(t)\le\Gamma(m+1)(N-m).
+ \label{eq:cappedbounds}
+\end{equation}
+Every rung is attenuated from its native value by the amplitude
+factor \(\min\{1,\sqrt{h(t)/[\Gamma(m+1)]}\}\). This is coherent,
+excitation-dependent coupling to one output, not feedback based
+on a measured photon record. The piecewise regular model permits
+the hazard jump at \(T_0\).
+
+\begin{theorem}[Finite-\(K\) fidelity and release-time guarantee]
+Let
+\begin{equation}
+ \delta_K=\min\left\{1,\frac{e^{-K/8}}{1-e^{-1/4}}\right\}.
+ \label{eq:deltak}
+\end{equation}
+The lossless source \eqref{eq:cappedrates} satisfies
+\begin{equation}
+ F_N^C[f]\ge(1-\delta_K)^2.
+ \label{eq:cappedfidelity}
+\end{equation}
+For \(0<\delta_{\mathrm{tail}}<1\), define
+\begin{equation}
+ T_1=T_0+\frac2{\Gamma N}
+ \ln\frac{N(N-K)}{K\delta_{\mathrm{tail}}}.
+ \label{eq:T1}
+\end{equation}
+Then
+\begin{equation}
+ \E_C T_{\mathrm{last}}
+ \le T_1+(\delta_K+\delta_{\mathrm{tail}})\frac{\HH_N}{\Gamma}.
+ \label{eq:cappedtime}
+\end{equation}
+For the smallest even \(K\ge24\ln N\) and
+\(\delta_{\mathrm{tail}}=N^{-3}\), at sufficiently large \(N\),
+\begin{equation}
+ F_N^C[f]\ge1-O(N^{-3}),\qquad
+ \E_C T_{\mathrm{last}}
+ =O\!\left(\frac{\ln N}{\Gamma N}\right).
+ \label{eq:cappedasymptotic}
+\end{equation}
+\end{theorem}
+\begin{proof}
+Under the target Fock density, \(U_i=u(t_i)\) are independent
+uniform variables. Write \(M(v)=\#\{i:U_i\le v\}\) and define
+\begin{equation}
+ G=\{M(v)+1\ge Nv/2\text{ for every }v\in[K/N,1]\}.
+ \label{eq:good}
+\end{equation}
+On \(G\), actual and target rates agree at every time along the
+entire history, including all no-jump intervals. Before \(T_0\)
+they agree without restriction. Their positive amplitudes and
+probability densities therefore coincide pointwise on \(G\).
+
+If \(G\) fails at \(v\), let \(j=M(v)+1<Nv/2\).
+When \(j\le K/2\), it follows that
+\(M(K/N)<K/2\); the binomial lower-tail bound is \(e^{-K/8}\).
+For \(j>K/2\), the \(j\)th order statistic satisfies
+\(U_{(j)}>2j/N\), so a binomial with mean \(2j\) is at most
+\(j-1\), of probability at most \(e^{-j/4}\).
+Only \(j<N/2\) can violate the inequality, but extending the sum
+to infinity increases the bound. Hence
+\begin{equation}
+ \Prob_f(G^c)
+ \le e^{-K/8}+\sum_{j>K/2}e^{-j/4}
+ =\frac{e^{-K/8}}{1-e^{-1/4}}\le\delta_K
+\end{equation}
+when the displayed untruncated bound is at most one; otherwise
+the trivial probability bound supplies \(\delta_K=1\).
+The normalized actual and target densities agree on \(G\), so
+\(\Prob_C(G^c)=\Prob_f(G^c)\le\delta_K\).
+Their affinity is at least their common probability on \(G\).
+Squaring proves \eqref{eq:cappedfidelity}.
+
+Equation~\eqref{eq:T1} gives
+\(1-u(T_1)=\delta_{\mathrm{tail}}/(N+\delta_{\mathrm{tail}})\).
+Thus the target probability of a late photon is
+\(1-u(T_1)^N\le N[1-u(T_1)]\le\delta_{\mathrm{tail}}\).
+Equality of the good-history densities implies
+\(\Prob_C(T_{\mathrm{last}}>T_1)\le\delta_K+\delta_{\mathrm{tail}}\).
+From any state and time, the lower rate bound in
+\eqref{eq:cappedbounds} limits the mean remaining release time
+by \(\HH_N/\Gamma\). Splitting the mean completion time at
+\(T_1\) proves \eqref{eq:cappedtime}. Finally the stated choice
+of \(K\) gives \(\delta_K=O(N^{-3})\), while
+\(T_0=O(\ln N/(\Gamma N))\) and the second term in
+\eqref{eq:T1} has the same order.
+\end{proof}
+
+The initial part of the target pulse contains mean count \(K\).
+The later hazard rises with its deterministic cumulative
+probability. Only strongly delayed count histories would need
+a rate enhancement; clipping changes these rare histories.
+Thus the exact-purity slowdown in Section~\ref{sec:exact} is not
+a bound on fidelities tending to one. Equations
+\eqref{eq:cappedrates}--\eqref{eq:cappedasymptotic} give a
+constructive counterexample under the very same native-rate cap.
+
+\subsection{Fixed local loss: polynomial acceptance and high conditional purity}
+
+Add independent local decay at rate \(\gamma\) per excitation.
+Let \(\psi_C\) be the normalized lossless capped-source amplitude.
+The all-desired amplitude is
+\(e^{-\gamma\sum_i t_i/2}\psi_C\), by the same integrated-excitation
+identity used in Section~\ref{sec:local}. Define
+\begin{equation}
+ q(\gamma)=\int_0^\infty e^{-\gamma t}|f(t)|^2\dd t,\qquad
+ g_\gamma(t)=q(\gamma)^{-1/2}e^{-\gamma t/2}f(t).
+ \label{eq:tiltedmode}
+\end{equation}
+
+\begin{theorem}[Loss robustness of the capped construction]
+Let \(P_{\mathrm{acc}}\) be the probability that all \(N\) photons
+enter the desired output, and \(Y_N[g_\gamma]\) its unconditional
+overlap with \(\Fock{N}{g_\gamma}\). Then
+\begin{align}
+ (1-\delta_K)q(\gamma)^N
+ &\le P_{\mathrm{acc}}\le q(\gamma)^N, \label{eq:accbounds}\\
+ Y_N[g_\gamma]&\ge q(\gamma)^N(1-\delta_K)^2,\\
+ F_{N\mid\mathrm{all\ desired}}[g_\gamma]
+ &\ge(1-\delta_K)^2. \label{eq:lossF}
+\end{align}
+Moreover, with \(\epsilon=\gamma/\Gamma\),
+\begin{equation}
+ q(\gamma)^N
+ \ge\exp\{-\epsilon[K+2\ln(N/K)]\}.
+ \label{eq:polysuccess}
+\end{equation}
+For fixed \(\epsilon\) and the \(K=O(\ln N)\) choice above,
+acceptance has a polynomial lower bound in \(N\), while conditional
+fidelity tends to one.
+\end{theorem}
+\begin{proof}
+Exponential tilting by \(e^{-\gamma t}\) makes the distribution
+\(|g_\gamma|^2\) stochastically earlier than \(|f|^2\). One may
+see this by noting that an increasing indicator of a late time
+has nonpositive covariance with the decreasing weight.
+The event \(G\) is preserved by moving any arrival earlier.
+An independent quantile coupling therefore gives
+\(\Prob_{g_\gamma}(G)\ge1-\delta_K\).
+
+On \(G\), \(\psi_C=\prod_i f(t_i)\). Integrating its locally
+attenuated squared modulus over \(G\) gives
+\(P_{\mathrm{acc}}\ge q^N\Prob_{g_\gamma}(G)\).
+Likewise, restricting the positive overlap with
+\(\prod_i g_\gamma(t_i)\) to \(G\) gives amplitude at least
+\(q^{N/2}\Prob_{g_\gamma}(G)\), proving the yield bound.
+
+For the upper bound on acceptance, \(r_m^C(t)\le s_m(t)\) at
+every common state and time. Couple the two pure-birth processes
+so that whenever their counts agree all actual jumps can be
+shared with target jumps, with extra jumps allowed for the
+target. When the counts differ, unit jumps cannot reverse their
+order. This gives every actual arrival time no earlier than
+its coupled target arrival. Hence
+\begin{equation}
+ P_{\mathrm{acc}}=\E_C e^{-\gamma\sum_i t_i}
+ \le\E_f e^{-\gamma\sum_i t_i}=q^N .
+\end{equation}
+Dividing the yield lower bound by this upper bound proves
+\eqref{eq:lossF}.
+
+Integrating the survival function in \eqref{eq:cappedcdf} gives
+the exact first moment
+\begin{equation}
+ N\E_f t
+ =N\int_0^\infty[1-u(t)]\dd t
+ =\frac{K+2\ln(N/K)}{\Gamma}.
+ \label{eq:firstmoment}
+\end{equation}
+Jensen's inequality,
+\(\E_f e^{-\gamma t}\ge e^{-\gamma\E_f t}\),
+proves \eqref{eq:polysuccess}.
+\end{proof}
+
+The polynomial exponent in \eqref{eq:polysuccess} is a guarantee,
+not an optimized loss frontier. It may be worse than the native
+success exponent in \eqref{eq:fixedlossyield}. The result concerns
+the all-desired sector; operational use of its conditioning has
+the heralding qualification stated in Section~\ref{sec:local}.
+
+\begin{lemma}[Accepted completion times are stochastically earlier]
+For any such time-dependent pure-birth ladder with positive
+cumulative rates and complete release, conditioning on no
+independent local loss makes the completion time stochastically
+no later than its lossless completion time. In particular,
+\begin{equation}
+ \E[T_{\mathrm{last}}\mid\mathrm{all\ desired}]
+ \le\E_C T_{\mathrm{last}}.
+ \label{eq:acceptedtime}
+\end{equation}
+\end{lemma}
+\begin{proof}
+Let \(R_m(t)=\int_0^t r_m(s)\dd s\). Using independent
+unit-rate exponentials \(E_m\), construct successive arrivals by
+\begin{equation}
+ T_{m+1}=R_m^{-1}\bigl(R_m(T_m)+E_m\bigr),\qquad T_0=0.
+\end{equation}
+Each \(T_j\) is coordinatewise increasing in all the \(E_m\).
+Independent product measures are associated: two increasing
+functions have nonnegative covariance. This follows by the
+one-variable Chebyshev covariance identity and induction over
+independent coordinates. Therefore any increasing function of
+the arrivals has nonpositive covariance with
+\(W=e^{-\gamma\sum_jT_j}\), a decreasing function of those
+coordinates. The no-local-loss conditional measure weights
+histories by \(W/\E W\). Applying the covariance inequality to
+\(\mathbf1_{\{T_N>t\}}\) proves stochastic domination; integrating
+the tail inequality proves \eqref{eq:acceptedtime}.
+\end{proof}
+
+The argument uses monotonic cumulative rates and their inverses,
+not monotonic instantaneous rates in time. Consequently accepted
+runs of the capped construction also finish in mean time
+\(O(\ln N/(\Gamma N))\).
+
+\section{Reproducible numerical consistency checks}
+\label{sec:numerics}
+
+The executable \texttt{verification/check\_fidelity.py} evaluates
+specified trial modes, verifies exact identities, and reports
+ordinary floating-point convergence checks. Numerical overlaps
+are achievable values for those modes, not certificates of
+global optimality. The analytic uniform and asymptotic theorems
+do not depend on fitting the numerical results.
+
+For these numerical calculations set \(\Gamma=1\). For the native
+source, use scaled time \(x=Nt\) and write
+\(f(t)=\sqrt N\,\phi(x)\). Set \(c_0(0)=1\) and \(c_j(0)=0\)
+for \(j>0\). The positive ordered-amplitude recursion is
+\begin{equation}
+ c_j'=-\frac{(j+1)(N-j)}{2N}c_j+
+ j\sqrt{\frac{N-j+1}{N}}\,\phi(x)c_{j-1},
+ \qquad j=0,\ldots,N,
+ \label{eq:recursion}
+\end{equation}
+with the second term absent at \(j=0\). Then
+\(c_N(\infty)\) is the exact trial amplitude. Thus an ordered
+\(N\)-dimensional integral reduces to \(N+1\) ordinary differential
+equations. The same construction with the general cascade rates
+evaluates the partial-source and local-loss conditional kernels.
+The reported values use the trial mode truncated at
+\(x=X=\ln(M/a)+35\) and then exactly renormalized. If \(q\) is
+the removed one-photon norm, then
+\begin{equation}
+ q=\frac{M e^{-X}}{a+(n-1)e^{-X}}.
+\end{equation}
+The infinite and truncated \(n\)-photon target states have squared
+overlap \((1-q)^n\). Their projection probabilities against any
+source therefore differ by at most
+\(\sqrt{1-(1-q)^n}\), their pure-state trace distance. The code
+reports this conservative analytic cutoff budget separately from
+the measured change between two numerical cutoffs.
+
+For the explicit fully inverted pulse \eqref{eq:pulse},
+representative values are
+\begin{center}
+\begin{tabular}{@{}rrrr@{}}
+\toprule
+\(N\)&Trial fidelity&\(\sqrt N\) times trial fidelity&
+Infinite-pulse lower bound\\
+\midrule
+1&1.000000000&1.000000&1.000000000\\
+2&0.955818490&1.351731&0.923632012\\
+5&0.833841887&1.864527&0.762238935\\
+10&0.704689065&2.228422&0.618866167\\
+20&0.565254318&2.527894&0.480738698\\
+50&0.396241902&2.801853&0.327835432\\
+100&0.292837776&2.928378&0.239469289\\
+\bottomrule
+\end{tabular}
+\end{center}
+The infinite one-photon pulse has fidelity one exactly. The exact
+two-photon optimum in Section~\ref{sec:two} is larger than the
+trial value, as required.
+
+For the partial-source trial pulse \eqref{eq:trial}, the check
+also evaluates the relative entropy by an independent
+one-dimensional quantile integral:
+\begin{center}
+\begin{tabular}{@{}rrrr@{}}
+\toprule
+\(M\)&\(n\)&\(e^{-D_{M,n}}\)&Trial fidelity\\
+\midrule
+10&2&0.998151912&0.999058744\\
+20&10&0.967523540&0.981861157\\
+100&10&0.999176823&0.999581755\\
+100&90&0.681685371&0.763737854\\
+\bottomrule
+\end{tabular}
+\end{center}
+A noninteger-parameter example is native emission with
+\(N=5\), \(\epsilon=0.25\). Equation~\eqref{eq:localprob} gives
+\(p_0=0.5883789413\); the conditional trial fidelity is
+\(0.8693225961\), and the unconditional trial yield is
+\(0.5114911087\).
+
+Across these default rows, the largest change between the two
+tolerance settings is \(2.7\times10^{-12}\), and the largest
+change between tail parameters 30 and 35 is
+\(6.5\times10^{-12}\). The largest mode-normalization residual is
+\(2.2\times10^{-16}\), and the independent quantile-integral
+discrepancy is \(5.7\times10^{-14}\). Evaluating the exact
+two-photon Bessel mode with the cascade recursion gives a
+squared-fidelity residual of \(1.9\times10^{-13}\).
+
+The verification also compares the direct product and gamma
+quotient for \(p_0\), the unweighted hypergeometric identity
+\(\sum_m\HG(N,m,k,j)=(N+1)/(k+1)\), and the weighted identity
+used in \eqref{eq:thinningbound}. The hypergeometric comparisons
+use exact rational arithmetic. The program's machine-readable
+output records the residuals, tolerance comparisons, and cutoff
+budgets. These checks support implementation consistency; the
+analytic proofs establish the uniform and asymptotic results.
+
+\section{Relation to prior work and physical scope}
+\label{sec:discussion}
+
+The collective rate ladder, multiphoton wavefunction, and
+multimode character of the emitted field are established
+background. Paulisch and collaborators analyzed superradiant
+photonic states and their metrological usefulness
+\cite{paulisch}. Perarnau-Llobet and collaborators developed
+efficient observables and explicit few-mode Fock decompositions
+\cite{perarnau}. Lemberger and M\o lmer studied the one-photon
+temporal modes and found a dominant occupation above 90 percent
+\cite{lemberger}. That occupation fraction does not determine the
+optimized probability that all photons share one mode.
+
+Tziperman and collaborators studied complete propagating quantum
+states and finite-size single-mode Fock fidelities, including
+direct collective decay \cite{tziperman}. Liu and Shen's
+weak-excitation Fock-generation regime \cite{liu} is consistent
+with the dilute symmetric-source bounds above. The discrete
+cavity-mode Tavis--Cummings setting of Ref.~\cite{yadav} is a
+different output problem. Belliardo and collaborators optimize
+temporal modes for information extraction from a superradiant
+burst \cite{belliardo}; an information-optimal mode can contain
+a vanishing fraction of the photons. A task-optimal mode therefore
+need not be the most occupied one-photon mode.
+
+Quantum-soliton analyses describe how center-of-mass
+delocalization can suppress a many-body Hartree overlap even
+when its \(N\)th root stays close to one \cite{holdaway}.
+That root is distinct from a one-photon occupation or
+reduced-state fidelity. The pair-distance factor in
+Eq.~\eqref{eq:wave} makes this comparison relevant.
+Malz, Trivedi, and Cirac established the large-\(N\) Dicke
+population dynamics \cite{malz}; the count argument above
+starts from that collective rate model and proves a uniform
+arrival-density bound.
+
+Deterministic optical Fock preparation, shaped bosonic input
+synthesis, and controlled cavity release are established
+constructions \cite{brown,gough,pfaff}. Dissipative Rydberg
+filtering, photon subtraction, and temporal heralding provide
+other state-preparation mechanisms \cite{gorshkov,pasharavesh,abudayyeh}.
+They motivate distinctions among deterministic emission,
+conditional fidelity, and unconditional target yield.
+
+Transition-rate engineering along collective ladders is used,
+for example, in the superabsorption proposal of Higgins and
+collaborators \cite{higgins}. Resolving transition frequencies
+and engineering their rates does not alone implement the
+coherent single jump
+\(\sum_m\sqrt{r_m(t)}|m+1\rangle\langle m|\) required by the
+capped construction. Distinct output channels can retain rung
+information. The construction specifies a coherent
+excitation-dependent coupling to the same output, with no
+additional environmental history record. It is not an
+experimental architecture or a finite-bandwidth implementation.
+
+The proved restrictions depend on the allowed operations.
+Uniform attenuation, symmetric diagonal phases, and deterministic
+common rate shaping retain the modal ceiling in their stated
+senses. Prefix detection changes the photon-number resource.
+Excitation-dependent coherent coupling changes the transition
+ladder. Exact Fock factorization under a native-rate cap is slow,
+while the controlled approximation in Section~\ref{sec:capped}
+retains fast release and fidelity tending to one. These results
+do not classify all excitation-preserving dynamics, other spin
+sectors, ancillary memories, adaptive measurements, or non-Markov
+sources. Emitter disorder, additional channels, and unobserved
+local-loss histories require their own output-state analysis.
+
+\begin{thebibliography}{99}\small
+\bibitem{paulisch} V. Paulisch et al., \emph{Quantum metrology with one-dimensional superradiant photonic states}, Phys. Rev. A \textbf{99}, 043807 (2019). \href{https://arxiv.org/abs/1805.00712}{arXiv:1805.00712}.
+
+\bibitem{perarnau} M. Perarnau-Llobet, A. Gonz\'alez-Tudela, and J. I. Cirac, \emph{Multimode Fock states with large photon number: effective descriptions and applications in quantum metrology}, Quantum Sci. Technol. \textbf{5}, 025003 (2020). \href{https://arxiv.org/abs/1910.03323}{arXiv:1910.03323}, especially Sec.~IV D and App.~I E.
+
+\bibitem{lemberger} B. Lemberger and K. M\o lmer, \emph{Radiation eigenmodes of Dicke superradiance}, Phys. Rev. A \textbf{103}, 033713 (2021). \href{https://arxiv.org/abs/2009.11687}{arXiv:2009.11687}.
+
+\bibitem{malz} D. Malz, R. Trivedi, and J. I. Cirac, \emph{Large-$N$ limit of Dicke superradiance}, Phys. Rev. A \textbf{106}, 013716 (2022). \href{https://arxiv.org/abs/2202.05197}{arXiv:2202.05197}.
+
+\bibitem{tziperman} O. Tziperman et al., \emph{Nonlinear quantum light generation in collective spontaneous emission}, ACS Nano \textbf{19}, 21260--21270 (2025). \href{https://doi.org/10.1021/acsnano.4c15257}{doi:10.1021/acsnano.4c15257}; preprint \href{https://arxiv.org/abs/2306.11348}{arXiv:2306.11348} under its earlier title.
+
+\bibitem{liu} Q. Liu and J.-T. Shen, \emph{Photonic Fock state generation using superradiance}, Opt. Lett. \textbf{47}, 4576--4579 (2022). \href{https://doi.org/10.1364/OL.468481}{doi:10.1364/OL.468481}.
+
+\bibitem{holdaway} D. I. H. Holdaway, C. Weiss, and S. A. Gardiner, \emph{Quantum theory of bright matter-wave solitons in harmonic confinement}, Phys. Rev. A \textbf{85}, 053618 (2012). \href{https://arxiv.org/abs/1203.6006}{arXiv:1203.6006}, especially Sec.~V C.
+
+\bibitem{yadav} A. Yadav and D. D. Yavuz, \emph{Quantum statistics of single-mode radiation emitted by superradiant Dicke states}, \href{https://arxiv.org/abs/2508.09962}{arXiv:2508.09962} (2025).
+
+\bibitem{belliardo} F. Belliardo, A. Chu, M. Koppenh\"ofer, and A. A. Clerk, \emph{Extracting information from a superradiant burst using simple measurements}, \href{https://arxiv.org/abs/2603.13130}{arXiv:2603.13130v2} (31 March 2026).
+
+\bibitem{gough}
+J. E. Gough and G. Zhang, \emph{Generating nonclassical quantum
+input field states with modulating filters}, EPJ Quantum Technol.
+\textbf{2}, 15 (2015).
+\href{https://doi.org/10.1140/epjqt/s40507-015-0027-z}
+{doi:10.1140/epjqt/s40507-015-0027-z}.
+
+\bibitem{brown}
+K. R. Brown, K. M. Dani, D. M. Stamper-Kurn, and K. B. Whaley,
+\emph{Deterministic optical Fock-state generation},
+Phys. Rev. A \textbf{67}, 043818 (2003).
+\href{https://doi.org/10.1103/PhysRevA.67.043818}
+{doi:10.1103/PhysRevA.67.043818}.
+
+\bibitem{pfaff}
+W. Pfaff et al., \emph{Controlled release of multiphoton quantum
+states from a microwave cavity memory}, Nature Phys. \textbf{13},
+882--887 (2017).
+\href{https://doi.org/10.1038/nphys4143}{doi:10.1038/nphys4143}.
+
+\bibitem{pasharavesh}
+A. Pasharavesh and M. Bajcsy, \emph{Multi-Photon Fock State
+Generation via Selective Single Photon Subtraction in a Cascaded
+Waveguide QED System}, Adv. Quantum Technol. \textbf{8}, 2400616
+(2025). \href{https://doi.org/10.1002/qute.202400616}
+{doi:10.1002/qute.202400616}.
+
+\bibitem{gorshkov}
+A. V. Gorshkov, R. Nath, and T. Pohl, \emph{Dissipative Many-Body
+Quantum Optics in Rydberg Media}, Phys. Rev. Lett. \textbf{110},
+153601 (2013).
+\href{https://doi.org/10.1103/PhysRevLett.110.153601}
+{doi:10.1103/PhysRevLett.110.153601}.
+
+\bibitem{abudayyeh}
+H. Abudayyeh, B. Lubotzky, S. Majumder, J. A. Hollingsworth, and
+R. Rapaport, \emph{Purification of single photons by temporal
+heralding of quantum dot sources},
+\href{https://arxiv.org/abs/1805.00201}{arXiv:1805.00201} (2018).
+
+\bibitem{higgins}
+K. D. B. Higgins, S. C. Benjamin, T. M. Stace, G. J. Milburn,
+B. W. Lovett, and E. M. Gauger, \emph{Superabsorption of light via
+quantum engineering}, Nature Commun. \textbf{5}, 4705 (2014).
+\href{https://doi.org/10.1038/ncomms5705}{doi:10.1038/ncomms5705}.
+\end{thebibliography}
+\end{document}
