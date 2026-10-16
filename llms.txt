@@ -1,0 +1,52 @@
+# Collective Photon Fidelity
+
+> A research and learning repository about the optimized squared overlap of collectively emitted light with a single temporal-mode Fock state, and the photon, loss, and control resources that change it.
+
+## Source hierarchy
+
+- [README](README.md): scientific question, model, principal results, reading routes, and reproduction commands.
+- [Canonical LaTeX theory](theory/collective_photon_fidelity.tex): definitions, exact assumptions, theorem statements, proofs, and primary bibliography. The section and equation labels below are searchable identifiers in this file.
+- [Compiled theory PDF](theory/collective_photon_fidelity.pdf): the same mathematical reference in reader-facing form.
+- [Thirty-milestone learning map](learning/MILESTONES.md): the settled common route M01–M30, progressing from background/preliminaries to narrative/innovation.
+- [Educational bridge](learning/BRIDGE.md): selected anchor sections, notation translation, worked reasoning, and the connection to the project's proofs.
+- [Repository and tutoring guidance](AGENTS.md): scientific conventions, maintenance checks, and the requested milestone-teaching protocol.
+
+For this project's mathematical results, use the canonical theory. The map and bridge explain and organize that reference; the educational anchor supports the additional input-output foundations. Numerical checks evaluate specified quantities and support implementation consistency.
+
+## Route scientific questions
+
+| Question | Canonical location and key identifiers |
+|---|---|
+| What source and output state are assumed, and what is being optimized? | Section 1, `sec:model`; `eq:fidelitydef`. Fix the normalized photon-number sector and squared-fidelity convention first. |
+| Where do the collective rates and correlated photon times come from? | Section 2, `sec:wave`; `eq:wave`. Distinguish the ordered-arrival density from the normalized symmetric-coordinate wavefunction. |
+| How is an achievable lower bound constructed? | Section 3, `sec:lower`; `eq:kl`, `eq:pulse`, `eq:lower`. The product relative-entropy minimizer supplies a fidelity bound; it is not established as the true optimizing pulse. |
+| Why does optimization over every temporal mode still give the native exponent? | Sections 1 and 4, `eq:main`, `sec:upper`; `eq:countfidelity`, `eq:dwell`. The trial mode supplies a median cut, and the count bound is uniform in that cut. |
+| How do emitter number and symmetric excitation number change the result? | Section 5, `sec:partial`; `eq:affine`, `eq:trial`, `eq:D`, `eq:dilutefidelity`, `eq:fraction`, `thm:partial`. Keep the dilute, fixed-fraction, and near-inversion regimes separate. |
+| Is there a finite-size case with a certified optimum? | Section 6, `sec:two`: the exact two-photon Bessel-mode solution. Section 13 explains how the verifier checks it. |
+| What survives uniform optical attenuation? | Section 7, `sec:attenuation`; `eq:binomialloss`, `eq:hypergeom`, `eq:survivor`, `eq:anynumber`. Separate conditional survivor fidelity from unconditional target yield. |
+| What changes under independent local atomic decay? | Section 8, `sec:local`; `eq:localprob`, `eq:localkernel`, `eq:fixedlossyield`, `eq:strongF`, `eq:strongP`. The exact all-desired sector is the controlled result; fewer-photon sectors are not the uniform-attenuation problem. |
+| Which phase or rate controls leave the limitation in place? | Section 9, `sec:phases`; `eq:ladder`, `eq:phaserm`, `eq:isometry`. The same section explains ideal all-photon mode filtering and its success probability. |
+| What does detecting and consuming a prefix buy, and what does imperfect hardware cost? | Section 10, `sec:prefix`; `eq:prefixidentity`, `eq:prefixlaw`, `eq:prefixfraction`, `eq:prefixcost`. Specify record alignment, consumed photons, nominal retained count, detector stopping rule, and switching delay. |
+| What is required for exactly single-mode Fock emission under a rate cap? | Section 11, `sec:exact`; `eq:exactcriterion`, `eq:phase`, `eq:ratecap`, `eq:exactslow`, `eq:nativetime`. Reachable levels, phase compatibility, and coherent output are essential. |
+| How can approximate purity retain the native time order, including local-loss conditioning? | Section 12, `sec:capped`; `eq:cappedrates`, `eq:good`, `eq:cappedasymptotic`, `eq:accbounds`, `eq:lossF`, `eq:polysuccess`, `eq:acceptedtime`. Use the finite-parameter guarantees and their assumptions before quoting asymptotics. |
+| What do the numerical results establish? | Section 13, `sec:numerics`; `eq:recursion`. Read the cutoff budget, normalization convention, and distinction between trial overlaps and optimized-fidelity theorems. |
+| Which ingredients are established prior work, and what physical implementations are covered? | Section 14, `sec:discussion`, and the primary bibliography. The coherent excitation-dependent jump is a mathematical coupling model; rate equations alone do not establish its implementation. |
+
+## Single educational anchor
+
+- [Kiilerich and Mølmer, Quantum interactions with pulses of radiation](https://doi.org/10.1103/PhysRevA.102.023717), Physical Review A 102, 023717 (2020).
+- [Open arXiv version](https://arxiv.org/abs/2003.04573).
+
+Use Sections II A–C and III through the bridge guide. They supply the quantum input-output and selected-output-mode foundations. The collective-emission fidelity bounds and resource statements are developed in this repository. The primary research bibliography remains available for attribution without expanding the single-anchor teaching route into a prerequisite reading list.
+
+## Reproduction
+
+- [Verification entry point](verification/check_fidelity.py): run `python3 verification/check_fidelity.py` from the repository root; add `--json` for machine-readable residuals and cutoff budgets.
+- [Calculation implementation](verification/fidelity.py): normalized Dicke-family trial modes, ordered-amplitude recursion, loss probabilities, and hypergeometric weights.
+- [Dependencies](requirements.txt) and [Makefile](Makefile): `make check` runs the consistency checks; `make pdf` rebuilds the compiled theory from its source.
+
+## Interpretation and teaching
+
+Preserve the separation between mean mode occupation, density-matrix purity, normalized conditional Fock fidelity, photon-number probability, and unconditional target yield. A large lower bound is not an exact optimum, and an asymptotic statement is not a finite-size equality. Identify which loss channel and allowed controls each claim assumes.
+
+For a requested tutorial, follow the map in order and use the protocol under `Learning map and tutoring` in AGENTS.md. Keep the common targets stable while adapting explanations within a milestone. Keep session attempts and progress separate from the public scientific map, and do not infer a pass from a continuation request.
