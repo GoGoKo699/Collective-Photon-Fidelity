@@ -20,13 +20,13 @@ The successive waiting times between emissions are independent exponentials with
 \lambda_j=j(N-j+1),\qquad j=1,\ldots,N.
 ```
 
-For ordered times $`0=t_0<t_1<\cdots<t_N`$,
+For ordered times $`0=t_0\lt t_1\lt \cdots\lt t_N`$,
 
 ```math
 \begin{aligned}
 \sum_{j=1}^N\lambda_j(t_j-t_{j-1})
  &=\sum_{j=1}^N(2j-N)t_j\\
- &=\sum_i t_i+\sum_{i<j}|t_i-t_j|.
+ &=\sum_i t_i+\sum_{i\lt j}|t_i-t_j|.
 \end{aligned}
 ```
 
@@ -37,7 +37,7 @@ Since $`\prod_j\lambda_j=(N!)^2`$, the standard cascade amplitude [Perarnau-Llob
 ```math
 \boxed{
  \psi_N(\boldsymbol t)=\sqrt{N!}\exp\!\left[-\frac12\sum_i t_i-
- \frac12\sum_{i<j}|t_i-t_j|\right].}
+ \frac12\sum_{i\lt j}|t_i-t_j|\right].}
 ```
 
 Indeed the ordered-domain density is $`N!|\psi_N|^2=(N!)^2\exp[-\sum_j\lambda_j(t_j-t_{j-1})]`$, which integrates to one over that domain. The symmetric density $`P_N=|\psi_N|^2`$ therefore integrates to one over the full orthant. Positivity permits replacing $`f`$ by $`|f|`$ without decreasing the overlap.
@@ -169,15 +169,15 @@ p_m(T)=\int_0^T h_m(s)e^{-r_m(T-s)}\,ds
  \le\frac{\left\lVert h_m\right\rVert_\infty}{r_m}.
 ```
 
-$`T_m`$ contains the independent first waiting time $`\operatorname{Exp}(N)`$, so convolution gives $`\left\lVert h_m\right\rVert_\infty\le N`$. Already,
+$`T_m`$ contains the independent first waiting time $`\mathrm{Exp}(N)`$, so convolution gives $`\left\lVert h_m\right\rVert_\infty\le N`$. Already,
 
 ```math
 p_m(T)\le\min\!\left\{1,\frac{N}{(m+1)(N-m)}\right\}.
 ```
 
-Together with the [count-affinity inequality](#eq-countfidelity), this gives an explicit finite-$`N`$ upper bound by inserting the displayed expression for $`1\le m<N`$ and the bound one for $`m=0,N`$, and clipping the resulting squared sum at one.
+Together with the [count-affinity inequality](#eq-countfidelity), this gives an explicit finite-$`N`$ upper bound by inserting the displayed expression for $`1\le m\lt N`$ and the bound one for $`m=0,N`$, and clipping the resulting squared sum at one.
 
-To improve the asymptotic constant, fix $`K\ge2`$ independently of $`N`$. For $`m\ge K`$, convolution contraction gives $`\left\lVert h_m\right\rVert_\infty\le\left\lVert h_K\right\rVert_\infty`$. The density of $`NT_K`$ converges uniformly to that of $`Y_K=\sum_{j=1}^K\operatorname{Exp}(j)`$. This follows from convergence of each fixed-rate exponential density in both $`L^1`$ and $`L^\infty`$, followed by convolution. $`Y_K`$ has the distribution of the maximum of $`K`$ independent unit-rate exponentials, hence
+To improve the asymptotic constant, fix $`K\ge2`$ independently of $`N`$. For $`m\ge K`$, convolution contraction gives $`\left\lVert h_m\right\rVert_\infty\le\left\lVert h_K\right\rVert_\infty`$. The density of $`NT_K`$ converges uniformly to that of $`Y_K=\sum_{j=1}^K\mathrm{Exp}(j)`$. This follows from convergence of each fixed-rate exponential density in both $`L^1`$ and $`L^\infty`$, followed by convolution. $`Y_K`$ has the distribution of the maximum of $`K`$ independent unit-rate exponentials, hence
 
 ```math
 h_{Y_K}(s)=Ke^{-s}(1-e^{-s})^{K-1},\qquad

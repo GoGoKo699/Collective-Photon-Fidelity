@@ -91,7 +91,7 @@ squared-fidelity residual of $`1.9\times10^{-13}`$.
 
 The verification also compares the direct product and gamma
 quotient for $`p_0`$, the unweighted hypergeometric identity
-$`\sum_m\operatorname{HG}(N,m,k,j)=(N+1)/(k+1)`$, and the weighted identity
+$`\sum_m\mathrm{HG}(N,m,k,j)=(N+1)/(k+1)`$, and the weighted identity
 used in the [thinned count bound](attenuation.md#eq-thinningbound). The hypergeometric comparisons
 use exact rational arithmetic. The program's machine-readable
 output records the residuals, tolerance comparisons, and cutoff

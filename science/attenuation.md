@@ -7,7 +7,7 @@ Uniform optical loss samples particles from the emitted state without selecting 
 <a id="sec-attenuation"></a>
 
 Let $`\mathcal L_\eta`$ be uniform, mode-independent attenuation of the
-ideal output, with vacuum in the unused port and $`0<\eta<1`$.
+ideal output, with vacuum in the unused port and $`0\lt \eta\lt 1`$.
 The number $`K_{\mathrm{out}}`$ of transmitted photons is binomial:
 
 <a id="eq-binomialloss"></a>
@@ -26,7 +26,7 @@ $`F_{N\to k}^\star=F^\star(\rho_N^{(k)})`$.
 
 **Theorem (Uniform survivor bound).**
 
-There is a universal $`C<\infty`$ such that
+There is a universal $`C\lt \infty`$ such that
 $`F_{N\to k}^\star\le C/\sqrt{k}`$ for all $`N\ge k\ge1`$.
 More precisely, along every sequence $`N\ge k\to\infty`$,
 
@@ -50,7 +50,7 @@ the arrival-density and dwell estimate
 
 ```math
 p_m(T)\le\frac{N}{(m+1)(N-m)}
- \le\frac{N}{m(N-m)},\qquad 1\le m<N.
+ \le\frac{N}{m(N-m)},\qquad 1\le m\lt N.
 ```
 
 The retained early count has the hypergeometric mixture
@@ -60,10 +60,10 @@ The retained early count has the hypergeometric mixture
 ```math
 q_j(T)=\sum_{m=0}^N p_m(T)
  \underbrace{\frac{\binom mj\binom{N-m}{k-j}}{\binom Nk}}
- _{\operatorname{HG}(N,m,k,j)}.
+ _{\mathrm{HG}(N,m,k,j)}.
 ```
 
-For $`1\le j<k`$, the kernel vanishes at $`m=0,N`$. The identities
+For $`1\le j\lt k`$, the kernel vanishes at $`m=0,N`$. The identities
 $`\binom mj/m=\binom{m-1}{j-1}/j`$ and its complementary version,
 followed by Vandermonde convolution, give
 
@@ -71,7 +71,7 @@ followed by Vandermonde convolution, give
 
 ```math
 \begin{aligned}
-\sum_{m=1}^{N-1}\frac{\operatorname{HG}(N,m,k,j)}{m(N-m)}
+\sum_{m=1}^{N-1}\frac{\mathrm{HG}(N,m,k,j)}{m(N-m)}
  &=\frac{\binom{N-1}{k-1}}
  {j(k-j)\binom Nk}
  =\frac{k}{N j(k-j)},\\
@@ -129,7 +129,7 @@ For $`k`$ proportional to $`N`$, the two orders match.
 
 **Corollary (Optimize both output photon number and mode).**
 
-At fixed $`0<\eta<1`$,
+At fixed $`0\lt \eta\lt 1`$,
 
 <a id="eq-anynumber"></a>
 

@@ -36,10 +36,10 @@ Its unnormalized symmetric amplitude and normalized density are
 \begin{aligned}
 \psi_{\mathrm{un}}(\boldsymbol\tau)
  &=\sqrt{N!}\,
-   e^{-a\sum_i\tau_i/2-\sum_{i<j}|\tau_i-\tau_j|/2},\\
+   e^{-a\sum_i\tau_i/2-\sum_{i\lt j}|\tau_i-\tau_j|/2},\\
  P_{\mathrm{cond}}(\boldsymbol\tau)
  &=\frac{\Gamma_{\!E}(N+a)}{\Gamma_{\!E}(a)}
-   e^{-a\sum_i\tau_i-\sum_{i<j}|\tau_i-\tau_j|}.
+   e^{-a\sum_i\tau_i-\sum_{i\lt j}|\tau_i-\tau_j|}.
 \end{aligned}
 ```
 

@@ -52,7 +52,7 @@ probability lies in $`(0,1)`$. Conversely, those hazards generate
 the independent order-statistic law, so the positive amplitude
 equals the target amplitude.
 
-For ordered times $`0<t_1<\cdots<t_N`$, the product of jump phases
+For ordered times $`0\lt t_1\lt \cdots\lt t_N`$, the product of jump phases
 and diagonal propagators has phase
 $`\sum_{j=1}^N\phi_{j-1}(t_j)`$, up to a global final-state phase.
 To equal the target, its difference from
@@ -99,7 +99,7 @@ F_{\exp}(\kappa)=
 It follows by integrating the square root of each pair of
 exponential waiting densities. Writing
 $`r_m=\kappa(N-m)e^{\xi_m}`$ gives
-$`F_{\exp}=\prod_m\operatorname{sech}^2(\xi_m/2)`$. Thus small independent
+$`F_{\exp}=\prod_m\mathrm{sech}^2(\xi_m/2)`$. Thus small independent
 relative mismatches accumulate quadratically. This is a
 comparison-mode formula, not a necessary error budget for the
 fully optimized fidelity.
@@ -163,7 +163,7 @@ v_\gamma(t)=e^{i\arg f(t)}\sqrt{h(t)}
 The all-desired field is
 $`q^{N/2}\lvert N_{v_\gamma/\sqrt q}\rangle`$, with probability $`q^N`$.
 Since its lossless arrival time is stochastically no earlier than
-$`\operatorname{Exp}(\Gamma)`$,
+$`\mathrm{Exp}(\Gamma)`$,
 $`q=\mathbb{E} e^{-\gamma t}\le\Gamma/(\Gamma+\gamma)`$.
 Equality holds for constant $`h=\Gamma`$.
 

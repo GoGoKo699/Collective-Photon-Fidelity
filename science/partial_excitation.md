@@ -19,7 +19,7 @@ as in the [exact emitted wavefunction](native_emission.md#sec-wave) gives
 
 ```math
 P_{M,n}(\boldsymbol t)=\frac{\Gamma_{\!E}(M+1)}{\Gamma_{\!E}(a)}
- \exp\!\left[-a\sum_i t_i-\sum_{i<j}|t_i-t_j|\right].
+ \exp\!\left[-a\sum_i t_i-\sum_{i\lt j}|t_i-t_j|\right].
 ```
 
 Its positive square root is the normalized emitted amplitude.
@@ -123,7 +123,7 @@ Write the Stirling remainder as
 
 ```math
 \ln\Gamma_{\!E}(x)=(x-\tfrac12)\ln x-x+\tfrac12\ln(2\pi)+R(x),
- \qquad 0<R(x)<\frac1{12x},\quad x\ge1.
+ \qquad 0\lt R(x)\lt \frac1{12x},\quad x\ge1.
 ```
 
 Using $`\Gamma_{\!E}(M+1)=M\Gamma_{\!E}(M)`$, the [optimized product relative entropy](#eq-d) rearranges exactly to
@@ -213,7 +213,7 @@ p_m(T)\le
 
 For $`n/4\le m\le3n/4`$ this is $`O(\sqrt a/n)`$.
 At the median of an arbitrary trial pulse, the target count is
-$`\operatorname{Bin}(n,1/2)`$. Its square-root probabilities sum to
+$`\mathrm{Bin}(n,1/2)`$. Its square-root probabilities sum to
 $`O(n^{1/4})`$; the contribution outside the stated central
 interval is exponentially small by Cauchy–Schwarz and the
 binomial tail bound. The [count-affinity inequality](native_emission.md#eq-countfidelity) therefore

@@ -38,9 +38,9 @@ This work studies the one-photon temporal modes and finds a dominant occupation 
 <a id="malz"></a>
 ### Large-ensemble population dynamics
 
-**D. Malz, R. Trivedi, and J. I. Cirac, “Large-$N$ limit of Dicke superradiance,” Physical Review A 106, 013716 (2022)** [malz]. [Primary preprint](https://arxiv.org/abs/2202.05197).
+**D. Malz, R. Trivedi, and J. I. Cirac, “Large-$`N`$ limit of Dicke superradiance,” Physical Review A 106, 013716 (2022)** [malz]. [Primary preprint](https://arxiv.org/abs/2202.05197).
 
-Malz, Trivedi, and Cirac establish the large-$N$ Dicke population dynamics. The [temporal-count proof](../science/native_emission.md#sec-upper) starts from the same collective rate model and proves a uniform arrival-density bound suitable for bounding fidelity over every trial pulse.
+Malz, Trivedi, and Cirac establish the large-$`N`$ Dicke population dynamics. The [temporal-count proof](../science/native_emission.md#sec-upper) starts from the same collective rate model and proves a uniform arrival-density bound suitable for bounding fidelity over every trial pulse.
 
 ## Distinct state-preparation regimes and mode objectives
 
@@ -70,7 +70,7 @@ Belliardo and collaborators optimize temporal modes for extracting information f
 
 **D. I. H. Holdaway, C. Weiss, and S. A. Gardiner, “Quantum theory of bright matter-wave solitons in harmonic confinement,” Physical Review A 85, 053618 (2012)** [holdaway]. [Primary preprint](https://arxiv.org/abs/1203.6006), especially Section V C.
 
-Quantum-soliton analyses describe how center-of-mass delocalization can suppress a many-body Hartree overlap even when its $N$th root stays close to one. That root is distinct from a one-photon occupation or a reduced-state fidelity. The pair-distance factor in the [native photon wavefunction](../science/native_emission.md#eq-wave) makes this comparison relevant, while the source dynamics and the observables must retain their own definitions.
+Quantum-soliton analyses describe how center-of-mass delocalization can suppress a many-body Hartree overlap even when its $`N`$th root stays close to one. That root is distinct from a one-photon occupation or a reduced-state fidelity. The pair-distance factor in the [native photon wavefunction](../science/native_emission.md#eq-wave) makes this comparison relevant, while the source dynamics and the observables must retain their own definitions.
 
 ## Established preparation and release mechanisms
 
@@ -125,9 +125,9 @@ Temporal heralding can be used to purify emitted photons in a different source s
 
 Transition-rate engineering along collective ladders is used in the superabsorption proposal. Resolving transition frequencies and engineering their rates does not alone implement the coherent single jump
 
-$$
+```math
 L(t)=\sum_m\sqrt{r_m(t)}\,|m+1\rangle\langle m|
-$$
+```
 
 required by the [capped construction](../science/capped_control.md#eq-cappedrates). Distinct output channels can retain rung information. That construction specifies a coherent excitation-dependent coupling to the same output, with no additional environmental history record. It is an abstract control model; the rate prescription alone supplies neither an experimental architecture nor a finite-bandwidth implementation.
 

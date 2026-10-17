@@ -6,7 +6,7 @@ An excitation-dependent coupling to one coherent output can respect every native
 
 **Reading route:** [Model and conventions](model.md) · [Exact Fock criterion and rate-cap penalty](exact_fock_control.md) · [Independent local loss](local_loss.md)
 
-Choose an even integer $`4\le K<N`$ and set
+Choose an even integer $`4\le K\lt N`$ and set
 $`T_0=-\Gamma^{-1}\ln(1-K/N)`$. Define a target cumulative
 distribution and its hazard by
 
@@ -23,7 +23,7 @@ u(t)&=
   e^{-\Gamma N(t-T_0)/2}\right]^{-1},&t\ge T_0,
  \end{cases} \\
  h(t)&=\frac{u'(t)}{1-u(t)}
- =\begin{cases}\Gamma,&t<T_0,\\
+ =\begin{cases}\Gamma,&t\lt T_0,\\
  \Gamma Nu(t)/2,&t>T_0.
  \end{cases}
 \end{aligned}
@@ -71,7 +71,7 @@ The lossless source with the [capped rates](capped_control.md#eq-cappedrates) sa
 F_N^C[f]\ge(1-\delta_K)^2.
 ```
 
-For $`0<\delta_{\mathrm{tail}}<1`$, define
+For $`0\lt \delta_{\mathrm{tail}}\lt 1`$, define
 
 <a id="eq-t1"></a>
 
@@ -116,13 +116,13 @@ entire history, including all no-jump intervals. Before $`T_0`$
 they agree without restriction. Their positive amplitudes and
 probability densities therefore coincide pointwise on $`G`$.
 
-If $`G`$ fails at $`v`$, let $`j=M(v)+1<Nv/2`$.
+If $`G`$ fails at $`v`$, let $`j=M(v)+1\lt Nv/2`$.
 When $`j\le K/2`$, it follows that
-$`M(K/N)<K/2`$; the binomial lower-tail bound is $`e^{-K/8}`$.
+$`M(K/N)\lt K/2`$; the binomial lower-tail bound is $`e^{-K/8}`$.
 For $`j>K/2`$, the $`j`$th order statistic satisfies
 $`U_{(j)}>2j/N`$, so a binomial with mean $`2j`$ is at most
 $`j-1`$, of probability at most $`e^{-j/4}`$.
-Only $`j<N/2`$ can violate the inequality, but extending the sum
+Only $`j\lt N/2`$ can violate the inequality, but extending the sum
 to infinity increases the bound. Hence
 
 ```math

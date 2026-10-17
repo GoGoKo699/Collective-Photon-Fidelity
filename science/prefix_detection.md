@@ -7,7 +7,7 @@ Detecting and consuming an initial photon prefix prepares a less excited symmetr
 **Reading route:** [Model and conventions](model.md) · [Partial excitation](partial_excitation.md) · [Restrictions on controls](control_restrictions.md)
 
 Start with the lossless native source. Detect and consume its first
-$`r`$ photons, $`0\le r<N`$, and immediately route all later photons
+$`r`$ photons, $`0\le r\lt N`$, and immediately route all later photons
 to the retained output. Use the $`r`$th-click time as the new time
 origin; for $`r=0`$, use the preparation time.
 
@@ -76,7 +76,7 @@ $`N`$-photon state, nor an optimality theorem for all adaptive controls.
 
 ## Proposition: Exact nominal-target detection and latency cost
 
-Let $`r\ge1`$, detector efficiency $`0<d\le1`$, and a deterministic
+Let $`r\ge1`$, detector efficiency $`0\lt d\le1`$, and a deterministic
 delay $`\Delta\ge0`$ between the $`r`$th detected click and routing.
 Each prefix photon is independently detected, no other source
 loss is present, and native emission continues during the delay.
@@ -91,7 +91,7 @@ Y_{N-r}^{\mathrm{nom}}(d,\Delta)
 ```
 
 Conditioning the ensemble on a trigger divides this by
-$`\mathbb{P}[\operatorname{Bin}(N,d)\ge r]`$.
+$`\mathbb{P}[\mathrm{Bin}(N,d)\ge r]`$.
 
 **Proof.**
 
@@ -116,7 +116,7 @@ target, so multiplication gives the exact result.
 
 ∎
 
-For $`r=\Theta(N)`$, fixed $`d<1`$ gives an exponential
+For $`r=\Theta(N)`$, fixed $`d\lt 1`$ gives an exponential
 nominal-yield penalty. To keep the detection factor nonvanishing
 requires $`r[-\ln d]=O(1)`$, equivalently $`r(1-d)=O(1)`$ near
 unit efficiency. When both $`r`$ and $`N-r`$ are proportional to
