@@ -74,7 +74,7 @@ Each phase ends with a synthesis. All milestone dependencies point to earlier mi
 ### M06 — Correlations and mode occupations
 
 - **Central question:** What can first-order field correlations reveal about the emitted pulse?
-- **Understanding target:** Interpret the first-order correlation kernel and its mode decomposition: eigenfunctions identify orthogonal temporal modes and eigenvalues give their mean occupations. Relate the largest occupation to an experimentally useful one-body statistic while preserving the distinction from an Fock overlap for $n$ photons. A large fraction in one mode does not by itself certify the probability that every photon occupies that mode.
+- **Understanding target:** Interpret the first-order correlation kernel and its mode decomposition: eigenfunctions identify orthogonal temporal modes and eigenvalues give their mean occupations. Relate the largest occupation to an experimentally useful one-body statistic while preserving the distinction from a Fock overlap for $n$ photons. A large fraction in one mode does not by itself certify the probability that every photon occupies that mode.
 - **Dependencies and story role:** [M03](#m03), [M04](#m04). Explains why the project asks for more than a dominant-mode calculation.
 - **Sources:** Anchor: Section II B, especially Eq. (15). [Theory Section 1](../theory/collective_photon_fidelity.tex), `sec:model`, and [Section 14](../theory/collective_photon_fidelity.tex), `sec:discussion`.
 - **Teaching intensity:** 2 rounds.
