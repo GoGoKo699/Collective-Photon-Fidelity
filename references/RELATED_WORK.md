@@ -12,7 +12,7 @@ The central quantity is the optimized probability that the complete emitted fiel
 
 **V. Paulisch, M. Perarnau-Llobet, A. González-Tudela, and J. I. Cirac, “Quantum metrology with one-dimensional superradiant photonic states,” Physical Review A 99, 043807 (2019)** [paulisch]. [Primary preprint](https://arxiv.org/abs/1805.00712).
 
-Paulisch and collaborators analyze superradiant photonic states and their metrological usefulness. The collective ladder, trajectory construction, and competing collective/local-decay rates are established ingredients. In particular, the no-local-loss branching product used in this repository appears in their supplemental analysis. The [local-loss account](../science/local_loss.md#eq-localprob) uses that sector probability together with a separate analysis of its normalized modal fidelity.
+Paulisch and collaborators analyze superradiant photonic states and their metrological usefulness. The collective ladder, trajectory construction, and competing collective/local-decay rates are established ingredients. Their [main Eq. (7)](https://arxiv.org/html/1805.00712v2) gives the weak-loss product approximation, while the supplemental competing-rate dynamics (SM25–SM35) yield the exact no-local-loss branching product used here. The [local-loss account](../science/local_loss.md#eq-localprob) uses that sector probability together with a separate analysis of its normalized modal fidelity.
 
 <a id="perarnau"></a>
 ### Multimode multiphoton Fock states
@@ -112,7 +112,7 @@ Photon subtraction and temporal heralding or switching are established preparati
 <a id="abudayyeh"></a>
 ### Temporal heralding of quantum-dot emission
 
-**H. Abudayyeh, B. Lubotzky, S. Majumder, J. A. Hollingsworth, and R. Rapaport, “Purification of single photons by temporal heralding of quantum dot sources,” arXiv:1805.00201 (2018)** [abudayyeh]. [Primary preprint](https://arxiv.org/abs/1805.00201).
+**H. Abudayyeh, B. Lubotzky, S. Majumder, J. A. Hollingsworth, and R. Rapaport, “Purification of single photons by temporal heralding of quantum dot sources,” ACS Photonics 6(2), 446–452 (2019)** [abudayyeh]. [Publisher](https://doi.org/10.1021/acsphotonics.8b01396), [primary preprint](https://arxiv.org/abs/1805.00201).
 
 Temporal heralding can be used to purify emitted photons in a different source setting. Together with the preparation mechanisms above, it motivates reporting deterministic emission, conditional fidelity, and unconditional target yield separately. A mathematical photon-number sector becomes a usable herald only when the success flag leaves the desired photons available.
 

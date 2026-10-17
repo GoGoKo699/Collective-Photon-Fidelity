@@ -208,7 +208,7 @@ density supremum. The [arrival-density and dwell bound](native_emission.md#eq-dw
 
 ```math
 p_m(T)\le
- \frac{\sqrt2\,n\sqrt a}{(n-m)(a+m)},\qquad m\ge J.
+ \frac{\sqrt2\,n\sqrt a}{(n-m)(a+m)},\qquad J\le m\lt n.
 ```
 
 For $`n/4\le m\le3n/4`$ this is $`O(\sqrt a/n)`$.
