@@ -2,9 +2,9 @@
 
 This bridge connects the description of a travelling quantum pulse to the full-field fidelity studied in this repository. Its central question is: **what would it mean for all emitted photons to occupy one temporal mode, and how can that claim be tested?**
 
-The educational anchor is Alexander Holm Kiilerich and Klaus Mølmer, *Quantum interactions with pulses of radiation*, **Physical Review A 102, 023717 (2020)**: [primary preprint](https://arxiv.org/abs/2003.04573), [primary PDF](https://arxiv.org/pdf/2003.04573). The collective-emission results are in the project's [theory note](../theory/collective_photon_fidelity.pdf) and [canonical LaTeX source](../theory/collective_photon_fidelity.tex).
+The educational anchor is Alexander Holm Kiilerich and Klaus Mølmer, [*Quantum interactions with pulses of radiation*, **Physical Review A 102, 023717 (2020)**](../references/RELATED_WORK.md#kiilerich2020): [primary preprint](https://arxiv.org/abs/2003.04573), [publisher](https://doi.org/10.1103/PhysRevA.102.023717). The collective-emission results begin with the project's [model and principal result](../science/model.md), followed by the linked topic pages.
 
-Use the [30-milestone map](MILESTONES.md) for the learning sequence. This page supplies notation, derivations, and connections to consult along that route. References such as `sec:wave` and `eq:fidelitydef` are stable labels in the canonical LaTeX source; the accompanying section titles identify the same material in the PDF.
+Use the [30-milestone map](MILESTONES.md) for the learning sequence. This page supplies notation, derivations, and connections to consult along that route. The scientific references below lead directly to the definitions, equations, and proofs used in each part of the bridge.
 
 ## 1. Read the anchor with a specific destination
 
@@ -19,7 +19,7 @@ Equation numbers in this table refer to the linked primary preprint.
 | Section III A | (23), (24) | Several input and output modes. |
 | Section III B | (25) | Correlations between an emitter and outgoing modes. |
 
-The translation below fixes its own operator conventions explicitly. It then replaces the local quantum system by the collective Dicke ladder. The native asymptotic law, count bound, relative-entropy bound, and resource theorems belong to the project theory.
+The translation below fixes its own operator conventions explicitly. It then replaces the local quantum system by the collective Dicke ladder. The native asymptotic law, count bound, relative-entropy bound, and resource theorems belong to the project's scientific account.
 
 **Map connection:** [M04](MILESTONES.md#m04)–[M08](MILESTONES.md#m08).
 
@@ -80,9 +80,9 @@ $$
 \widetilde b(\tau)=\Gamma^{-1/2}b(\tau/\Gamma)
 $$
 
-preserves the continuum commutator, mode norm, and creation operator. It therefore preserves all Fock overlaps. In the first native sections of the theory note, the variable called $t$ is already dimensionless; the distinction matters when returning to detector delays and physical loss rates.
+preserves the continuum commutator, mode norm, and creation operator. It therefore preserves all Fock overlaps. In the [native-emission proofs](../science/native_emission.md), the variable called $t$ is already dimensionless; the distinction matters when returning to detector delays and physical loss rates.
 
-**Canonical reference:** “Model, observables, and main result,” `sec:model`, `eq:fidelitydef`. **Map connection:** [M01](MILESTONES.md#m01)–[M04](MILESTONES.md#m04).
+**Canonical reference:** “Model, observables, and main result,” [Model and observables](../science/model.md#sec-model), [Fock-fidelity definition](../science/model.md#eq-fidelitydef). **Map connection:** [M01](MILESTONES.md#m01)–[M04](MILESTONES.md#m04).
 
 ## 3. Virtual source and receiver in one consistent convention
 
@@ -265,7 +265,7 @@ Three distinctions will recur:
 - A **reduced state for $k$ particles**, $\rho_N^{(k)}$, traces particle coordinates from a fixed-number field. It differs from the oscillator state $\rho_f$, which traces orthogonal modes and includes several number sectors.
 - If the desired sector occurs with probability $p_n$, its unconditional target yield is $Y_n^\star=p_nF^\star(\rho_n)$. Conditional fidelity, acceptance, and their product are separate quantities.
 
-**Canonical references:** `eq:fidelitydef` in `sec:model`; the reduced-state identity `eq:rdmlower` in “Uniform attenuation,” `sec:attenuation`. **Map connection:** [M03](MILESTONES.md#m03), [M06](MILESTONES.md#m06), [M08](MILESTONES.md#m08).
+**Canonical references:** [Fock-fidelity definition](../science/model.md#eq-fidelitydef) in [Model and observables](../science/model.md#sec-model); [Reduced-state lower bound](../science/attenuation.md#eq-rdmlower) in “Uniform attenuation,” [Uniform attenuation](../science/attenuation.md#sec-attenuation). **Map connection:** [M03](MILESTONES.md#m03), [M06](MILESTONES.md#m06), [M08](MILESTONES.md#m08).
 
 ## 5. Replace the oscillator by the Dicke ladder
 
@@ -321,7 +321,7 @@ $$
 
 The native amplitude is positive. The triangle inequality therefore permits replacing a trial mode by its absolute value when maximizing this overlap. No assumption that the actual photon times are independent has been made.
 
-**Canonical reference:** “Exact emitted wavefunction,” `sec:wave`, `eq:wave`. **Map connection:** [M09](MILESTONES.md#m09), [M10](MILESTONES.md#m10).
+**Canonical reference:** “Exact emitted wavefunction,” [Exact emitted wavefunction](../science/native_emission.md#sec-wave), [Normalized native wavefunction](../science/native_emission.md#eq-wave). **Map connection:** [M09](MILESTONES.md#m09), [M10](MILESTONES.md#m10).
 
 ## 6. Two probability arguments determine the native exponent
 
@@ -358,7 +358,7 @@ $$
 
 This pulse minimizes the product relative-entropy objective. That does not establish that it maximizes the true overlap, because Jensen's inequality need not be an equality.
 
-**Canonical reference:** “Constructive lower bound,” `sec:lower`, `eq:kl`, `eq:pulse`, `eq:lower`. **Map connection:** [M12](MILESTONES.md#m12), [M15](MILESTONES.md#m15).
+**Canonical reference:** “Constructive lower bound,” [Constructive lower bound](../science/native_emission.md#sec-lower), [Affinity and relative entropy](../science/native_emission.md#eq-kl), [Native trial pulse](../science/native_emission.md#eq-pulse), [Finite native lower bound](../science/native_emission.md#eq-lower). **Map connection:** [M12](MILESTONES.md#m12), [M15](MILESTONES.md#m15).
 
 ### Every trial mode supplies an upper-bound measurement
 
@@ -388,7 +388,7 @@ $$
 
 The result is $F_N^\star=\Theta(N^{-1/2})$. Neither bounding constant is an established exact prefactor, and an overlap computed for one mode is an achievable value rather than an optimization certificate.
 
-**Canonical references:** “Uniform upper bound from temporal photon counts,” `sec:upper`, `eq:countfidelity`, `eq:dwell`; main theorem `eq:main`. **Map connection:** [M11](MILESTONES.md#m11), [M13](MILESTONES.md#m13), [M16](MILESTONES.md#m16), [M17](MILESTONES.md#m17).
+**Canonical references:** “Uniform upper bound from temporal photon counts,” [Uniform count upper bound](../science/native_emission.md#sec-upper), [Temporal-count fidelity bound](../science/native_emission.md#eq-countfidelity), [Arrival-density and dwell-time bound](../science/native_emission.md#eq-dwell); [Native fidelity theorem](../science/model.md#eq-main). **Map connection:** [M11](MILESTONES.md#m11), [M13](MILESTONES.md#m13), [M16](MILESTONES.md#m16), [M17](MILESTONES.md#m17).
 
 ## 7. Read each resource change as a change of quantum state
 
@@ -410,9 +410,9 @@ $$
 
 A sublinear prefix has fidelity $\Theta(\sqrt{(r+1)/N})$ and cannot maintain a positive limiting fidelity. A fixed fractional prefix can: consuming half the photons gives the **asymptotic lower bound** $e/(2\sqrt2)\approx0.9611$. This is neither an exact optimum nor a finite-size equality. Discarding early light without retaining and using the timing record defines a different state.
 
-Detector efficiency and switching latency affect the yield for a predetermined retained photon number. The stopping rule routes the field a fixed delay $\Delta\ge0$ after the detector registers click number $r$, with $1\le r\lt N$ and efficiency $0\lt d\le1$. Assume independent prefix detection, no other source loss, and continued native emission during the delay. For the target containing $N-r$ photons, aligned to the actual switch time, the exact yield factor in `eq:prefixcost` is $d^r e^{-\Gamma(N-r)(r+1)\Delta}$ per initial attempt. A latency scale involving $\Gamma N^2$ requires both the consumed and retained photon numbers to be macroscopic.
+Detector efficiency and switching latency affect the yield for a predetermined retained photon number. The stopping rule routes the field a fixed delay $\Delta\ge0$ after the detector registers click number $r$, with $1\le r\lt N$ and efficiency $0\lt d\le1$. Assume independent prefix detection, no other source loss, and continued native emission during the delay. For the target containing $N-r$ photons, aligned to the actual switch time, the exact yield factor in [Nominal-target detection and latency cost](../science/prefix_detection.md#eq-prefixcost) is $d^r e^{-\Gamma(N-r)(r+1)\Delta}$ per initial attempt. A latency scale involving $\Gamma N^2$ requires both the consumed and retained photon numbers to be macroscopic.
 
-**Canonical references:** “Dependence on the initial excitation,” `sec:partial`, `eq:affine`, `eq:realascaling`, `eq:dilutefidelity`; “Detect a prefix,” `sec:prefix`, `eq:prefixidentity`, `eq:prefixfraction`, `eq:prefixcost`. **Map connection:** [M18](MILESTONES.md#m18), [M19](MILESTONES.md#m19), [M23](MILESTONES.md#m23), [M24](MILESTONES.md#m24).
+**Canonical references:** “Dependence on the initial excitation,” [Partial excitation](../science/partial_excitation.md#sec-partial), [Partial-source wavefunction](../science/partial_excitation.md#eq-affine), [Near-inversion scaling](../science/partial_excitation.md#eq-realascaling), [Dilute-source fidelity](../science/partial_excitation.md#eq-dilutefidelity); “Detect a prefix,” [Prefix detection](../science/prefix_detection.md#sec-prefix), [Prefix identity](../science/prefix_detection.md#eq-prefixidentity), [Fractional-prefix lower bound](../science/prefix_detection.md#eq-prefixfraction), [Nominal-target detection and latency cost](../science/prefix_detection.md#eq-prefixcost). **Map connection:** [M18](MILESTONES.md#m18), [M19](MILESTONES.md#m19), [M23](MILESTONES.md#m23), [M24](MILESTONES.md#m24).
 
 ### Uniform attenuation
 
@@ -420,7 +420,7 @@ Uniform optical attenuation traces photons without selecting a temporal mode or 
 
 The probability of the sector is binomial. Combining its probability with conditional mode fidelity gives an unconditional optimum of order $N^{-1}$ when both the target number and mode may be selected. This distinction explains why fewer photons after unobserved loss do not automatically reproduce the prefix protocol.
 
-**Canonical reference:** “Uniform attenuation,” `sec:attenuation`, `eq:binomialloss`, `eq:survivor`, `eq:anynumber`. **Map connection:** [M20](MILESTONES.md#m20).
+**Canonical reference:** “Uniform attenuation,” [Uniform attenuation](../science/attenuation.md#sec-attenuation), [Survivor-sector probability](../science/attenuation.md#eq-binomialloss), [Uniform survivor theorem](../science/attenuation.md#eq-survivor), [Optimized number-and-mode yield](../science/attenuation.md#eq-anynumber). **Map connection:** [M20](MILESTONES.md#m20).
 
 ### Independent local atomic decay
 
@@ -436,7 +436,7 @@ At fixed $\epsilon$, the conditional fidelity still scales as $\Theta(N^{-1/2})$
 
 A number sector is a mathematical conditioning event. Destructively counting all desired photons identifies that event retrospectively; a usable herald must leave the desired photons available and provide an appropriate success flag. Sectors containing fewer photons after local atomic decay are not automatically the uniform-attenuation particle reductions.
 
-**Canonical reference:** “Independent local decay,” `sec:local`, `eq:localprob`, `eq:localkernel`, `eq:fixedlossyield`, `eq:strongF`, `eq:strongP`. **Map connection:** [M21](MILESTONES.md#m21), [M22](MILESTONES.md#m22).
+**Canonical reference:** “Independent local decay,” [Independent local loss](../science/local_loss.md#sec-local), [No-local-loss probability](../science/local_loss.md#eq-localprob), [Conditional local-loss kernel](../science/local_loss.md#eq-localkernel), [Fixed-loss target yield](../science/local_loss.md#eq-fixedlossyield), [Strong-conditioning fidelity](../science/local_loss.md#eq-strongf), [Strong-conditioning probability](../science/local_loss.md#eq-strongp). **Map connection:** [M21](MILESTONES.md#m21), [M22](MILESTONES.md#m22).
 
 ## 8. Return to the oscillator to understand the control boundary
 
@@ -469,11 +469,11 @@ F_N[f]\ge1-O(N^{-3}),
 =O\left(\frac{\ln N}{\Gamma N}\right).
 $$
 
-Its finite-size construction, fixed-local-loss acceptance bounds, and accepted-time analysis have explicit assumptions in `sec:capped`. A classical controller that measures the emitted count and updates a rate is not automatically the same quantum channel: its additional history record can remove the temporal coherence that the coherent construction preserves.
+Its finite-size construction, fixed-local-loss acceptance bounds, and accepted-time analysis have explicit assumptions in [Capped coherent control](../science/capped_control.md#sec-capped). A classical controller that measures the emitted count and updates a rate is not automatically the same quantum channel: its additional history record can remove the temporal coherence that the coherent construction preserves.
 
 The virtual receiver is an analysis device, and the formal ladder coupling is a specified quantum model. Neither alone supplies a physical implementation or a nondestructive herald.
 
-**Canonical references:** “Controls that cannot improve the modal fidelity,” `sec:phases`, `eq:phaserm`, `eq:isometry`; “Exact single-mode ladders,” `sec:exact`, `eq:exactcriterion`, `eq:exactslow`, `eq:nativetime`; “A capped coherent control,” `sec:capped`, `eq:cappedrates`, `eq:cappedasymptotic`, `eq:accbounds`, `eq:acceptedtime`. **Map connection:** [M25](MILESTONES.md#m25)–[M29](MILESTONES.md#m29).
+**Canonical references:** “Controls that cannot improve the modal fidelity,” [Control restrictions](../science/control_restrictions.md#sec-phases), [Phase-removal inequality](../science/control_restrictions.md#eq-phaserm), [Common-rate time isometry](../science/control_restrictions.md#eq-isometry); “Exact single-mode ladders,” [Exact Fock control](../science/exact_fock_control.md#sec-exact), [Exact Fock criterion](../science/exact_fock_control.md#eq-exactcriterion), [Exact-factorization time and loss costs](../science/exact_fock_control.md#eq-exactslow), [Native mean release time](../science/exact_fock_control.md#eq-nativetime); “A capped coherent control,” [Capped coherent control](../science/capped_control.md#sec-capped), [Clipped coherent rates](../science/capped_control.md#eq-cappedrates), [Fast asymptotically unit fidelity](../science/capped_control.md#eq-cappedasymptotic), [Acceptance bounds](../science/capped_control.md#eq-accbounds), [Accepted completion times](../science/capped_control.md#eq-acceptedtime). **Map connection:** [M25](MILESTONES.md#m25)–[M29](MILESTONES.md#m29).
 
 ## 9. Use the bridge along the learning route
 
@@ -487,4 +487,4 @@ For reproducibility, the [verification script](../verification/check_fidelity.py
 python3 verification/check_fidelity.py
 ```
 
-Run it from the repository root. Its results support the stated algebra and implementation; the uniform optimization and asymptotic claims rest on the canonical proofs. The [README](../README.md) gives the complete project overview and research bibliography.
+Run it from the repository root. Its results support the stated algebra and implementation; the uniform optimization and asymptotic claims rest on the canonical proofs. The [README](../README.md) gives the project overview, [verification guide](../verification/README.md) explains the checks, and [related-work account](../references/RELATED_WORK.md) supplies the research attribution.
