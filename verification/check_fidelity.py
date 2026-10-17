@@ -111,8 +111,10 @@ def check_exact_modes() -> dict:
     exponential_residual = abs(value**2 - exact_exponential)
     require(exponential_residual < 1e-9, "The noninteger-a exponential benchmark failed")
 
-    # n=1 is an exponential for every a, not just a=1.
+    # n=1 is an exponential for every finite a, not just a=1.  The largest
+    # finite a catches spurious overflow in the scaled pulse and rate factors.
     one = check_trial(DickeFamily(1, 9.5))
+    largest_one = check_trial(DickeFamily(1, sys.float_info.max))
     return {
         "exact_global_F_2_star": exact,
         "Bessel_mode_recursion_fidelity": bessel_fidelity,
@@ -121,20 +123,49 @@ def check_exact_modes() -> dict:
         "noninteger_a_exponential_exact_fidelity": exact_exponential,
         "noninteger_a_exponential_recursion_residual": exponential_residual,
         "noninteger_a_one_photon_fidelity": one["trial_fidelity_estimate"],
+        "largest_finite_a_one_photon_fidelity": largest_one["trial_fidelity_estimate"],
     }
 
 
 def check_exact_loss_and_thinning() -> dict:
     """Use exact rational combinatorics, independent of the wavefunction ODE."""
     products = []
-    for n, epsilon in [(2, Fraction(1)), (5, Fraction(1, 4)), (10, Fraction(1)),
-                       (20, Fraction(2)), (50, Fraction(1, 2))]:
+    for n, epsilon in [(1, Fraction(0)), (5, Fraction(0)),
+                       (2, Fraction(1)), (5, Fraction(1, 4)), (10, Fraction(1)),
+                       (20, Fraction(2)), (50, Fraction(1, 2)),
+                       (1, Fraction(10**16)), (5, Fraction(10**16))]:
         product = math.prod(Fraction(j) / (j + epsilon) for j in range(1, n + 1))
         gamma_value = no_local_loss_probability(n, float(epsilon))
         relative_residual = abs(gamma_value / float(product) - 1)
         require(relative_residual < 1e-11, f"Gamma/product loss identity failed: n={n}")
+        require(0 <= gamma_value <= 1, f"Unphysical loss probability: n={n}")
+        if epsilon == 0:
+            require(gamma_value == 1, "Zero local loss must have exactly unit acceptance")
         products.append({"n": n, "epsilon": str(epsilon), "probability": gamma_value,
                          "relative_residual": relative_residual})
+
+    # At the largest finite loss ratio the one-photon answer is a representable
+    # subnormal, whereas the two-photon answer physically rounds to zero.
+    # Exact rational branching products distinguish these cases independently
+    # of the beta-function implementation and rule out NaN-based 'success'.
+    extreme_losses = []
+    extreme_epsilon = sys.float_info.max
+    rational_epsilon = Fraction.from_float(extreme_epsilon)
+    for n in (1, 2):
+        product = math.prod(Fraction(j) / (j + rational_epsilon) for j in range(1, n + 1))
+        expected = float(product)
+        value = no_local_loss_probability(n, extreme_epsilon)
+        require(math.isfinite(value) and 0 <= value <= 1,
+                f"Invalid extreme-loss probability: n={n}")
+        if expected:
+            relative_residual = abs(value / expected - 1)
+            require(relative_residual < 1e-11, "Representable subnormal loss probability failed")
+        else:
+            relative_residual = None
+            require(product > 0 and value == 0, "Physical loss-probability underflow failed")
+        extreme_losses.append({"n": n, "epsilon": extreme_epsilon, "probability": value,
+                               "exact_product_rounded_to_float": expected,
+                               "relative_residual_when_representable": relative_residual})
 
     # Include endpoints in the unweighted identity, and nontrivial interior
     # values in the weighted identity needed for uniform survivor bounds.
@@ -153,7 +184,8 @@ def check_exact_loss_and_thinning() -> dict:
             total = sum(hypergeometric_weight(N, m, k, v) for v in range(k + 1))
             require(total == 1, f"Hypergeometric normalization failed: {N,m,k}")
         identities.append({"N": N, "k": k, "j": j, "status": "exact rational equality"})
-    return {"local_loss_gamma_products": products, "thinning_identities": identities}
+    return {"local_loss_gamma_products": products, "thinning_identities": identities,
+            "extreme_finite_loss_checks": extreme_losses}
 
 
 def check_analytic_bounds() -> dict:
@@ -178,8 +210,19 @@ def check_analytic_bounds() -> dict:
     lower = math.exp(-family.kl_divergence())
     upper = family.finite_count_upper()
     require(0 < lower <= upper < 1, "Nontrivial finite lower/upper bounds are inconsistent")
+
+    # For a>=n-1 all interior dwell caps are at least one, so this finite
+    # bound is exactly one.  Reject overflowing or invalid intermediates;
+    # subnormal m/a ratios may harmlessly round away when added to one.
+    large_a_family = DickeFamily(10, sys.float_info.max)
+    with np.errstate(over="raise", invalid="raise", divide="raise", under="ignore"):
+        large_a_upper = large_a_family.finite_count_upper()
+    require(large_a_upper == 1, "The large-a finite count bound failed")
     return {"small_divergence_cases": small_divergences,
-            "native_n1000_closed_bounds_only": {"KL_lower": lower, "count_upper": upper}}
+            "native_n1000_closed_bounds_only": {"KL_lower": lower, "count_upper": upper},
+            "largest_finite_a_count_bound": {"n": large_a_family.n,
+                                              "a": large_a_family.a,
+                                              "count_upper": large_a_upper}}
 
 
 def main() -> int:
@@ -239,6 +282,7 @@ def main() -> int:
     print(f"\nMaximum trial normalization residual: {max(r['mode_normalization_residual'] for r in all_rows):.2g}")
     print(f"Maximum independent KL quadrature difference: {max(r['independent_KL_quadrature_difference'] for r in all_rows):.2g}")
     print("Exact rational thinning identities and local-loss gamma products passed.")
+    print("Scaled one-photon extreme-a and subnormal/underflow loss-probability checks passed.")
     print("Small-divergence KL and nontrivial finite count-bound checks passed (closed formulas only).")
     print("All checks passed. Use --json for all residuals and explicit cutoff budgets.")
     return 0

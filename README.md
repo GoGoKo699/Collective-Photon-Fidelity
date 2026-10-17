@@ -279,7 +279,7 @@ $$
 0\le r_m(t)\le\Gamma(m+1)(N-m),
 $$
 
-then **exact** purity forces $h(t)\le\Gamma$. With $H_N=\sum_{j=1}^{N}1/j$, the mean last-emission times satisfy
+then **exact single-mode Fock emission** forces $h(t)\le\Gamma$. With $H_N=\sum_{j=1}^{N}1/j$, the mean last-emission times satisfy
 
 $$
 \mathbb E T_{\mathrm{last}}^{\mathrm{exact\ Fock}}
@@ -289,9 +289,9 @@ $$
 =\frac{2H_N}{\Gamma(N+1)}.
 $$
 
-For controls that are exactly pure in the lossless model, adding independent local decay also bounds the survival of all $N$ photons by $(1+\epsilon)^{-N}$.
+For controls whose lossless output is an exact single-mode Fock state, adding independent local decay also bounds the survival of all $N$ photons by $(1+\epsilon)^{-N}$.
 
-The distinction between exact and approximate purity is essential. An explicit **abstract coherent excitation-dependent coupling** respects the same rate cap and achieves
+The distinction between exact Fock factorization and fidelity approaching one is essential. An explicit **abstract coherent excitation-dependent coupling** respects the same rate cap and achieves
 
 $$
 F_N[f]\ge1-O(N^{-3}),
@@ -306,7 +306,7 @@ This construction assumes a single coherent output jump whose amplitudes depend 
 
 ## Why the analytical bounds work
 
-In a single-mode Fock state, photon detection times are independent draws from $|f(t)|^2$. The number arriving before the mode's median time is therefore binomial. Dicke emission has a broader cut-count distribution. Comparing these two classical distributions gives an upper bound on quantum fidelity that is valid for every candidate mode.
+In a single-mode Fock state, photon detection times are independent draws from $|f(t)|^2$. The number arriving before the mode's median time is therefore binomial. For Dicke emission, each central count probability is at most of order $1/N$, uniformly in the cut time. Comparing these count distributions gives an upper bound on quantum fidelity that is valid for every candidate mode.
 
 The lower bound uses the positive collective-emission wavefunction, an explicit normalized product pulse, and a relative-entropy inequality. The matching size dependence establishes the exponent without a numerical search over all pulse shapes.
 

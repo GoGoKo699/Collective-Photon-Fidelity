@@ -35,7 +35,7 @@ from typing import Callable
 
 import numpy as np
 from scipy.integrate import quad, solve_ivp
-from scipy.special import gammaln
+from scipy.special import betaln, gammaln
 
 
 @dataclass(frozen=True)
@@ -57,8 +57,10 @@ class DickeFamily:
 
     def trial_phi(self, x: float) -> float:
         """Exactly normalized infinite-support mode in x=M*tau, for x>=0."""
-        return math.sqrt(self.a * self.M) * math.exp(-x / 2) / (
-            self.a + (self.n - 1) * math.exp(-x)
+        # Divide by a before multiplying: a*M can overflow even when the
+        # scaled pulse is finite (for n=1 it is simply exp(-x/2)).
+        return math.sqrt(self.M / self.a) * math.exp(-x / 2) / (
+            1 + ((self.n - 1) / self.a) * math.exp(-x)
         )
 
     def mode_tail(self, xmax: float) -> float:
@@ -122,7 +124,7 @@ class DickeFamily:
         caps = np.ones(self.n + 1)
         middle = m[1:-1]
         caps[1:-1] = np.minimum(
-            1, self.n * self.a / ((self.n - middle) * (self.a + middle))
+            1, (self.n / (self.n - middle)) / (1 + middle / self.a)
         )
         return min(1.0, float(np.sum(np.sqrt(caps) * np.exp(log_binomial / 2)) ** 2))
 
@@ -150,8 +152,10 @@ def ordered_amplitude(
         raise ValueError("xmax must be finite and positive")
     n, a, M = family.n, family.a, family.M
     j = np.arange(n + 1, dtype=float)
-    decay = (n - j) * (a + j) / (2 * M)
-    coupling = np.sqrt(j * (n - j + 1) * (a + j - 1) / M)
+    # Form bounded dimensionless rate ratios before products.  In particular,
+    # 2*M can overflow although every scaled coefficient remains finite.
+    decay = (n - j) * ((a + j) / M) / 2
+    coupling = np.sqrt(j * (n - j + 1) * ((a + j - 1) / M))
 
     def rhs(x: float, state: np.ndarray) -> np.ndarray:
         out = -decay * state
@@ -207,11 +211,20 @@ def no_local_loss_probability(n: int, epsilon: float) -> float:
     Desired jump sqrt(Gamma) J_- and independent local jumps
     sqrt(gamma) sigma_i^- have epsilon=gamma/Gamma.  This is the probability
     product_{j=1}^n j/(j+epsilon), not a conditional fidelity or a herald.
+
+    The equivalent n*B(n,1+epsilon) avoids cancellation between large
+    log-gamma values.  Probabilities below floating-point range underflow to
+    zero; small positive log-probabilities from roundoff are clipped at zero.
     """
     if not math.isfinite(epsilon) or epsilon < 0:
         raise ValueError("epsilon must be finite and nonnegative")
     DickeFamily(n, 1 + epsilon)
-    return float(math.exp(gammaln(n + 1) + gammaln(1 + epsilon) - gammaln(n + 1 + epsilon)))
+    if epsilon == 0:
+        return 1.0
+    log_probability = math.log(n) + float(betaln(n, 1 + epsilon))
+    if math.isnan(log_probability) or log_probability > 1e-12:
+        raise RuntimeError(f"Invalid no-local-loss log probability {log_probability}")
+    return math.exp(min(0.0, log_probability))
 
 
 def hypergeometric_weight(N: int, m: int, k: int, j: int) -> Fraction:

@@ -460,7 +460,7 @@ $$
 
 exact Fock factorization forces $h_f(t)\le\Gamma$. The mean final emission time is then at least $H_N/\Gamma$, where $H_N=\sum_{j=1}^N1/j$. Native emission instead takes $2H_N/[\Gamma(N+1)]$ on average.
 
-Third, that exact-purity penalty cannot be extended to every sequence approaching unit fidelity. The canonical capped construction uses an **abstract coherent excitation-dependent coupling** and attains
+Third, that exact-factorization penalty cannot be extended to every sequence approaching unit fidelity. The canonical capped construction uses an **abstract coherent excitation-dependent coupling** and attains
 
 $$
 F_N[f]\ge1-O(N^{-3}),
