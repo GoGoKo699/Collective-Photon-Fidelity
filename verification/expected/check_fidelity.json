@@ -1,0 +1,368 @@
+{
+  "status": "All checks passed; floating-point trial estimates, not optimized fidelities or interval certificates",
+  "scope": "Native and symmetric partial Dicke emission, no-local-loss sector, uniform attenuation identities",
+  "exact_mode_benchmarks": {
+    "exact_global_F_2_star": 0.956787875131927,
+    "Bessel_mode_recursion_fidelity": 0.9567878751321176,
+    "Bessel_mode_absolute_residual": 1.9062529332813938e-13,
+    "Bessel_mode_normalization_residual": 2.220446049250313e-16,
+    "noninteger_a_exponential_exact_fidelity": 0.7209675123474156,
+    "noninteger_a_exponential_recursion_residual": 6.661338147750939e-15,
+    "noninteger_a_one_photon_fidelity": 1.0000000000000766,
+    "largest_finite_a_one_photon_fidelity": 1.0000000000000766
+  },
+  "native_trial_results": [
+    {
+      "n": 1,
+      "a": 1.0,
+      "M_effective": 1.0,
+      "trial_fidelity_estimate": 1.0000000000000766,
+      "analytic_infinite_trial_KL_lower": 1.0,
+      "analytic_optimized_fidelity_count_upper": 1.0,
+      "KL_divergence": 0.0,
+      "independent_KL_quadrature_difference": 0.0,
+      "KL_quadrature_error_estimate": 0.0,
+      "mode_normalization_residual": 2.220446049250313e-16,
+      "two_tolerance_difference": 6.208367153703875e-13,
+      "two_cutoff_difference": 9.370282327836321e-14,
+      "final_scaled_time_cutoff": 35.0,
+      "removed_one_photon_norm": 6.305116760146989e-16,
+      "analytic_cutoff_projection_probability_budget": 2.510999155743982e-08,
+      "rhs_evaluations_total": 6558
+    },
+    {
+      "n": 2,
+      "a": 1.0,
+      "M_effective": 2.0,
+      "trial_fidelity_estimate": 0.9558184899320892,
+      "analytic_infinite_trial_KL_lower": 0.9236320123663313,
+      "analytic_optimized_fidelity_count_upper": 1.0,
+      "KL_divergence": 0.07944154167983586,
+      "independent_KL_quadrature_difference": 1.1102230246251565e-16,
+      "KL_quadrature_error_estimate": 8.577457879963349e-16,
+      "mode_normalization_residual": 0.0,
+      "two_tolerance_difference": 2.651434627409799e-12,
+      "two_cutoff_difference": 2.2604140781368187e-13,
+      "final_scaled_time_cutoff": 35.69314718055995,
+      "removed_one_photon_norm": 6.305116760146976e-16,
+      "analytic_cutoff_projection_probability_budget": 3.5510890611605266e-08,
+      "rhs_evaluations_total": 7038
+    },
+    {
+      "n": 5,
+      "a": 1.0,
+      "M_effective": 5.0,
+      "trial_fidelity_estimate": 0.8338418872483913,
+      "analytic_infinite_trial_KL_lower": 0.7622389346363239,
+      "analytic_optimized_fidelity_count_upper": 1.0,
+      "KL_divergence": 0.2714952099310812,
+      "independent_KL_quadrature_difference": 8.881784197001252e-16,
+      "KL_quadrature_error_estimate": 5.6166037961803725e-15,
+      "mode_normalization_residual": 2.220446049250313e-16,
+      "two_tolerance_difference": 3.7758685067501574e-13,
+      "two_cutoff_difference": 4.649614027130156e-13,
+      "final_scaled_time_cutoff": 36.6094379124341,
+      "removed_one_photon_norm": 6.305116760146969e-16,
+      "analytic_cutoff_projection_probability_budget": 5.614764803688112e-08,
+      "rhs_evaluations_total": 8970
+    },
+    {
+      "n": 10,
+      "a": 1.0,
+      "M_effective": 10.0,
+      "trial_fidelity_estimate": 0.7046890647418097,
+      "analytic_infinite_trial_KL_lower": 0.618866167065075,
+      "analytic_optimized_fidelity_count_upper": 1.0,
+      "KL_divergence": 0.47986623796944095,
+      "independent_KL_quadrature_difference": 0.0,
+      "KL_quadrature_error_estimate": 1.7763568394002505e-14,
+      "mode_normalization_residual": 2.220446049250313e-16,
+      "two_tolerance_difference": 3.019806626980426e-13,
+      "two_cutoff_difference": 7.346345753944661e-13,
+      "final_scaled_time_cutoff": 37.30258509299404,
+      "removed_one_photon_norm": 6.305116760147001e-16,
+      "analytic_cutoff_projection_probability_budget": 7.940476534910852e-08,
+      "rhs_evaluations_total": 29190
+    },
+    {
+      "n": 20,
+      "a": 1.0,
+      "M_effective": 20.0,
+      "trial_fidelity_estimate": 0.5652543181650357,
+      "analytic_infinite_trial_KL_lower": 0.480738698167729,
+      "analytic_optimized_fidelity_count_upper": 1.0,
+      "KL_divergence": 0.7324314035410566,
+      "independent_KL_quadrature_difference": 7.105427357601002e-15,
+      "KL_quadrature_error_estimate": 1.510791491909913e-11,
+      "mode_normalization_residual": 0.0,
+      "two_tolerance_difference": 5.03597163969971e-13,
+      "two_cutoff_difference": 1.1215472994763331e-12,
+      "final_scaled_time_cutoff": 37.99573227355399,
+      "removed_one_photon_norm": 6.305116760146989e-16,
+      "analytic_cutoff_projection_probability_budget": 1.1229529607376216e-07,
+      "rhs_evaluations_total": 46782
+    },
+    {
+      "n": 50,
+      "a": 1.0,
+      "M_effective": 50.0,
+      "trial_fidelity_estimate": 0.3962419017178149,
+      "analytic_infinite_trial_KL_lower": 0.32783543165902684,
+      "analytic_optimized_fidelity_count_upper": 1.0,
+      "KL_divergence": 1.1152435292548546,
+      "independent_KL_quadrature_difference": 0.0,
+      "KL_quadrature_error_estimate": 5.2668980288217426e-11,
+      "mode_normalization_residual": 0.0,
+      "two_tolerance_difference": 3.9335201762469296e-13,
+      "two_cutoff_difference": 1.8934298573469732e-12,
+      "final_scaled_time_cutoff": 38.912023005428146,
+      "removed_one_photon_norm": 6.305116760146983e-16,
+      "analytic_cutoff_projection_probability_budget": 1.7755445305802507e-07,
+      "rhs_evaluations_total": 76818
+    },
+    {
+      "n": 100,
+      "a": 1.0,
+      "M_effective": 100.0,
+      "trial_fidelity_estimate": 0.2928377760766531,
+      "analytic_infinite_trial_KL_lower": 0.23946928904766077,
+      "analytic_optimized_fidelity_count_upper": 1.0,
+      "KL_divergence": 1.4293300997993583,
+      "independent_KL_quadrature_difference": 5.684341886080802e-14,
+      "KL_quadrature_error_estimate": 9.618972285352356e-11,
+      "mode_normalization_residual": 0.0,
+      "two_tolerance_difference": 4.974909373345326e-13,
+      "two_cutoff_difference": 2.761291195696458e-12,
+      "final_scaled_time_cutoff": 39.605170185988094,
+      "removed_one_photon_norm": 6.305116760146971e-16,
+      "analytic_cutoff_projection_probability_budget": 2.5109991557439393e-07,
+      "rhs_evaluations_total": 100458
+    }
+  ],
+  "partial_trial_results": [
+    {
+      "n": 2,
+      "a": 9,
+      "M_effective": 10,
+      "trial_fidelity_estimate": 0.9990587442938017,
+      "analytic_infinite_trial_KL_lower": 0.9981519123222569,
+      "analytic_optimized_fidelity_count_upper": 1.0,
+      "KL_divergence": 0.0018497974986995541,
+      "independent_KL_quadrature_difference": 4.85722573273506e-16,
+      "KL_quadrature_error_estimate": 4.997845990205545e-15,
+      "mode_normalization_residual": 0.0,
+      "two_tolerance_difference": 1.587618925213974e-14,
+      "two_cutoff_difference": 1.8673951274195133e-13,
+      "final_scaled_time_cutoff": 35.10536051565783,
+      "removed_one_photon_norm": 6.305116760146975e-16,
+      "analytic_cutoff_projection_probability_budget": 3.551089061160526e-08,
+      "rhs_evaluations_total": 8478
+    },
+    {
+      "n": 10,
+      "a": 11,
+      "M_effective": 20,
+      "trial_fidelity_estimate": 0.9818611568020282,
+      "analytic_infinite_trial_KL_lower": 0.9675235398653825,
+      "analytic_optimized_fidelity_count_upper": 1.0,
+      "KL_divergence": 0.03301552376397021,
+      "independent_KL_quadrature_difference": 1.2878587085651816e-14,
+      "KL_quadrature_error_estimate": 3.026936413901496e-14,
+      "mode_normalization_residual": 1.1102230246251565e-16,
+      "two_tolerance_difference": 1.1213252548714081e-14,
+      "two_cutoff_difference": 9.277023593767808e-13,
+      "final_scaled_time_cutoff": 35.59783700075562,
+      "removed_one_photon_norm": 6.305116760147003e-16,
+      "analytic_cutoff_projection_probability_budget": 7.940476534910852e-08,
+      "rhs_evaluations_total": 35226
+    },
+    {
+      "n": 10,
+      "a": 91,
+      "M_effective": 100,
+      "trial_fidelity_estimate": 0.9995817547331187,
+      "analytic_infinite_trial_KL_lower": 0.9991768234880173,
+      "analytic_optimized_fidelity_count_upper": 1.0,
+      "KL_divergence": 0.0008235155078160084,
+      "independent_KL_quadrature_difference": 9.325873406851315e-15,
+      "KL_quadrature_error_estimate": 5.061235813881514e-14,
+      "mode_normalization_residual": 2.220446049250313e-16,
+      "two_tolerance_difference": 2.220446049250313e-15,
+      "two_cutoff_difference": 9.305889392408062e-13,
+      "final_scaled_time_cutoff": 35.09431067947124,
+      "removed_one_photon_norm": 6.305116760146984e-16,
+      "analytic_cutoff_projection_probability_budget": 7.94047653491084e-08,
+      "rhs_evaluations_total": 42006
+    },
+    {
+      "n": 90,
+      "a": 11,
+      "M_effective": 100,
+      "trial_fidelity_estimate": 0.7637378538319166,
+      "analytic_infinite_trial_KL_lower": 0.6816853709790052,
+      "analytic_optimized_fidelity_count_upper": 1.0,
+      "KL_divergence": 0.3831870604607843,
+      "independent_KL_quadrature_difference": 5.684341886080802e-14,
+      "KL_quadrature_error_estimate": 3.8748798618975924e-13,
+      "mode_normalization_residual": 0.0,
+      "two_tolerance_difference": 3.5915714846623814e-13,
+      "two_cutoff_difference": 6.459277557269161e-12,
+      "final_scaled_time_cutoff": 37.20727491318972,
+      "removed_one_photon_norm": 6.305116760146984e-16,
+      "analytic_cutoff_projection_probability_budget": 2.382142960473222e-07,
+      "rhs_evaluations_total": 100026
+    }
+  ],
+  "conditional_local_loss_trial_result": {
+    "n": 5,
+    "a": 1.25,
+    "M_effective": 5.25,
+    "trial_fidelity_estimate": 0.8693225960756151,
+    "analytic_infinite_trial_KL_lower": 0.8060704523998292,
+    "analytic_optimized_fidelity_count_upper": 1.0,
+    "KL_divergence": 0.2155841303701873,
+    "independent_KL_quadrature_difference": 2.6645352591003757e-15,
+    "KL_quadrature_error_estimate": 6.143374646530283e-15,
+    "mode_normalization_residual": 1.1102230246251565e-16,
+    "two_tolerance_difference": 3.483879851273741e-13,
+    "two_cutoff_difference": 4.727329638853917e-13,
+    "final_scaled_time_cutoff": 36.43508452528932,
+    "removed_one_photon_norm": 6.305116760147006e-16,
+    "analytic_cutoff_projection_probability_budget": 5.6147648036881285e-08,
+    "rhs_evaluations_total": 9282,
+    "epsilon": 0.25,
+    "all_photon_probability": 0.5883789413201178,
+    "unconditional_trial_yield": 0.5114911087446268
+  },
+  "analytic_bound_checks": {
+    "small_divergence_cases": [
+      {
+        "n": 10,
+        "a": 1000.0,
+        "KL_divergence": 7.433048304236147e-06,
+        "curvature_lower": 7.366800873407911e-06,
+        "curvature_upper": 7.5e-06
+      },
+      {
+        "n": 10,
+        "a": 100000000.0,
+        "KL_divergence": 7.499999325000053e-16,
+        "curvature_lower": 7.499998650000181e-16,
+        "curvature_upper": 7.5e-16
+      }
+    ],
+    "native_n1000_closed_bounds_only": {
+      "KL_lower": 0.07872689486187491,
+      "count_upper": 0.3169880424003478
+    },
+    "largest_finite_a_count_bound": {
+      "n": 10,
+      "a": 1.7976931348623157e+308,
+      "count_upper": 1.0
+    }
+  },
+  "local_loss_gamma_products": [
+    {
+      "n": 1,
+      "epsilon": "0",
+      "probability": 1.0,
+      "relative_residual": 0.0
+    },
+    {
+      "n": 5,
+      "epsilon": "0",
+      "probability": 1.0,
+      "relative_residual": 0.0
+    },
+    {
+      "n": 2,
+      "epsilon": "1",
+      "probability": 0.33333333333333337,
+      "relative_residual": 2.220446049250313e-16
+    },
+    {
+      "n": 5,
+      "epsilon": "1/4",
+      "probability": 0.5883789413201178,
+      "relative_residual": 0.0
+    },
+    {
+      "n": 10,
+      "epsilon": "1",
+      "probability": 0.09090909090909098,
+      "relative_residual": 6.661338147750939e-16
+    },
+    {
+      "n": 20,
+      "epsilon": "2",
+      "probability": 0.004329004329004331,
+      "relative_residual": 4.440892098500626e-16
+    },
+    {
+      "n": 50,
+      "epsilon": "1/2",
+      "probability": 0.12440111784014748,
+      "relative_residual": 4.440892098500626e-16
+    },
+    {
+      "n": 1,
+      "epsilon": "10000000000000000",
+      "probability": 9.999999999999965e-17,
+      "relative_residual": 3.3306690738754696e-15
+    },
+    {
+      "n": 5,
+      "epsilon": "10000000000000000",
+      "probability": 1.1999999999999523e-78,
+      "relative_residual": 3.8191672047105385e-14
+    }
+  ],
+  "thinning_identities": [
+    {
+      "N": 5,
+      "k": 2,
+      "j": 1,
+      "status": "exact rational equality"
+    },
+    {
+      "N": 10,
+      "k": 7,
+      "j": 2,
+      "status": "exact rational equality"
+    },
+    {
+      "N": 20,
+      "k": 10,
+      "j": 5,
+      "status": "exact rational equality"
+    },
+    {
+      "N": 100,
+      "k": 23,
+      "j": 9,
+      "status": "exact rational equality"
+    },
+    {
+      "N": 100,
+      "k": 99,
+      "j": 50,
+      "status": "exact rational equality"
+    }
+  ],
+  "extreme_finite_loss_checks": [
+    {
+      "n": 1,
+      "epsilon": 1.7976931348623157e+308,
+      "probability": 5.562684646268137e-309,
+      "exact_product_rounded_to_float": 5.562684646268003e-309,
+      "relative_residual_when_representable": 2.398081733190338e-14
+    },
+    {
+      "n": 2,
+      "epsilon": 1.7976931348623157e+308,
+      "probability": 0.0,
+      "exact_product_rounded_to_float": 0.0,
+      "relative_residual_when_representable": null
+    }
+  ]
+}

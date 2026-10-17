@@ -1,52 +1,126 @@
 # Collective Photon Fidelity
 
-> A research and learning repository about the optimized squared overlap of collectively emitted light with a single temporal-mode Fock state, and the photon, loss, and control resources that change it.
+This repository studies single-temporal-mode Fock-state fidelity in ideal
+Dicke emission and how excitation, loss, prefix detection, and coherent
+control change its preparation resources. The scientific account is organized
+by topic under science/.
 
-## Source hierarchy
+## Authoritative files
 
-- [README](README.md): scientific question, model, principal results, reading routes, and reproduction commands.
-- [Canonical LaTeX theory](theory/collective_photon_fidelity.tex): definitions, exact assumptions, theorem statements, proofs, and primary bibliography. The section and equation labels below are searchable identifiers in this file.
-- [Compiled theory PDF](theory/collective_photon_fidelity.pdf): the same mathematical reference in reader-facing form.
-- [Thirty-milestone learning map](learning/MILESTONES.md): the settled common route M01–M30, progressing from background/preliminaries to narrative/innovation.
-- [Educational bridge](learning/BRIDGE.md): selected anchor sections, notation translation, worked reasoning, and the connection to the project's proofs.
-- [Repository and tutoring guidance](AGENTS.md): scientific conventions, maintenance checks, and the requested milestone-teaching protocol.
+- [README.md](README.md): question, principal results, science and learning
+  routes, reproduction commands, purpose and contact.
+- [science/model.md](science/model.md): source and field assumptions,
+  normalized photon-number sectors, squared-fidelity convention, native
+  theorem and connected scientific route.
+- [science/native_emission.md](science/native_emission.md): exact wavefunction,
+  constructive product-pulse bound, uniform median-count upper bound, and
+  exact two-photon optimum.
+- [science/partial_excitation.md](science/partial_excitation.md): the affine
+  density family, explicit trial mode, relative-entropy minimizer, dilute and
+  fixed-fraction limits, and near-inversion theorem including real a.
+- [science/attenuation.md](science/attenuation.md): reduced survivor states,
+  exact thinning identities, conditional fidelity ceiling and fixed-transmission
+  target yield optimized over photon number and mode.
+- [science/local_loss.md](science/local_loss.md): no-local-loss probability,
+  exact normalized all-desired-photon kernel, fixed-loss scaling and
+  exponential cost of strong native-source conditioning.
+- [science/control_restrictions.md](science/control_restrictions.md): phase
+  removal, reduced-state inequality, deterministic common clock, and ideal
+  all-photon mode filtering.
+- [science/prefix_detection.md](science/prefix_detection.md): recorded-origin
+  prefix identity, consumed-photon law, detector stopping rule, nominal-target
+  yield, trigger conditioning, and switching delay.
+- [science/exact_fock_control.md](science/exact_fock_control.md): necessary and
+  sufficient Markov-ladder criterion, phase compatibility, exact-emission
+  time penalty and local-loss survival bound under the native rate cap.
+- [science/capped_control.md](science/capped_control.md): coherent capped
+  construction, finite-K fidelity and release-time bounds, local-loss acceptance
+  and conditional fidelity, and accepted completion-time comparison.
+- [science/numerical_checks.md](science/numerical_checks.md): amplitude
+  recursion, normalization and cutoff conventions, numerical tables and
+  independent comparisons.
+- [science/interpretation.md](science/interpretation.md): why timing
+  correlations constrain full-state fidelity and how the operations change
+  the relevant state, record, photon number, time and yield.
+- [references/RELATED_WORK.md](references/RELATED_WORK.md): primary-source
+  roles and physical-model boundaries.
+- [references/references.bib](references/references.bib): structured source
+  metadata, including the single educational anchor.
+- [verification/README.md](verification/README.md): environment, commands,
+  benchmark coverage, reference output and limits of numerical evidence.
+- [verification/check_fidelity.py](verification/check_fidelity.py):
+  executable checks; --json reports residuals and analytical cutoff budgets.
+- [verification/fidelity.py](verification/fidelity.py): normalized trial
+  modes, ordered-amplitude recursion, loss probabilities and exact thinning.
 
-For this project's mathematical results, use the canonical theory. The map and bridge explain and organize that reference; the educational anchor supports the additional input-output foundations. Numerical checks evaluate specified quantities and support implementation consistency.
+## Reader routes
 
-## Route scientific questions
+To understand the scientific story, start with model.md, follow native_emission.md
+and partial_excitation.md, compare attenuation.md, local_loss.md and
+prefix_detection.md, then read the three control pages and interpretation.md.
 
-| Question | Canonical location and key identifiers |
+For an exact result, use the complete statement and proof on its topic page.
+The explicit equation anchors are stable cross-reference targets. A README
+summary, milestone target, trial pulse, or numerical example does not replace
+the relevant proof or its assumptions.
+
+For self-directed study, use the [30-milestone map](learning/MILESTONES.md)
+alongside the [educational bridge](learning/BRIDGE.md). The common map has
+14 background/preliminaries and 16 narrative/innovation milestones, with
+project-defined targets, dependencies and conceptual connections.
+
+The single selected anchor is Kiilerich and Mølmer, Quantum interactions with
+pulses of radiation, Physical Review A 102, 023717 (2020), especially Sections
+II A–C and III. The bridge translates the input–output and selected-mode
+framework. The project's fidelity theorems are sourced to the science pages;
+primary research citations retain their distinct attribution role.
+
+To reproduce the calculations, read verification/README.md, install the root
+requirements.txt dependencies, and run make check. Use the actual output;
+the committed JSON is a reference run with ordinary floating-point values.
+
+## Questions and decisive sources
+
+| Question | Source |
 |---|---|
-| What source and output state are assumed, and what is being optimized? | Section 1, `sec:model`; `eq:fidelitydef`. Fix the normalized photon-number sector and squared-fidelity convention first. |
-| Where do the collective rates and correlated photon times come from? | Section 2, `sec:wave`; `eq:wave`. Distinguish the ordered-arrival density from the normalized symmetric-coordinate wavefunction. |
-| How is an achievable lower bound constructed? | Section 3, `sec:lower`; `eq:kl`, `eq:pulse`, `eq:lower`. The product relative-entropy minimizer supplies a fidelity bound; it is not established as the true optimizing pulse. |
-| Why does optimization over every temporal mode still give the native exponent? | Sections 1 and 4, `eq:main`, `sec:upper`; `eq:countfidelity`, `eq:dwell`. The trial mode supplies a median cut, and the count bound is uniform in that cut. |
-| How do emitter number and symmetric excitation number change the result? | Section 5, `sec:partial`; `eq:affine`, `eq:trial`, `eq:D`, `eq:dilutefidelity`, `eq:fraction`, `thm:partial`. Keep the dilute, fixed-fraction, and near-inversion regimes separate. |
-| Is there a finite-size case with a certified optimum? | Section 6, `sec:two`: the exact two-photon Bessel-mode solution. Section 13 explains how the verifier checks it. |
-| What survives uniform optical attenuation? | Section 7, `sec:attenuation`; `eq:binomialloss`, `eq:hypergeom`, `eq:survivor`, `eq:anynumber`. Separate conditional survivor fidelity from unconditional target yield. |
-| What changes under independent local atomic decay? | Section 8, `sec:local`; `eq:localprob`, `eq:localkernel`, `eq:fixedlossyield`, `eq:strongF`, `eq:strongP`. The exact all-desired sector is the controlled result; fewer-photon sectors are not the uniform-attenuation problem. |
-| Which phase or rate controls leave the limitation in place? | Section 9, `sec:phases`; `eq:ladder`, `eq:phaserm`, `eq:isometry`. The same section explains ideal all-photon mode filtering and its success probability. |
-| What does detecting and consuming a prefix buy, and what does imperfect hardware cost? | Section 10, `sec:prefix`; `eq:prefixidentity`, `eq:prefixlaw`, `eq:prefixfraction`, `eq:prefixcost`. Specify record alignment, consumed photons, nominal retained count, detector stopping rule, and switching delay. |
-| What is required for exactly single-mode Fock emission under a rate cap? | Section 11, `sec:exact`; `eq:exactcriterion`, `eq:phase`, `eq:ratecap`, `eq:exactslow`, `eq:nativetime`. Reachable levels, phase compatibility, and coherent output are essential. |
-| How can fidelity approach one at the native time order, including local-loss conditioning? | Section 12, `sec:capped`; `eq:cappedrates`, `eq:good`, `eq:cappedasymptotic`, `eq:accbounds`, `eq:lossF`, `eq:polysuccess`, `eq:acceptedtime`. Use the finite-parameter guarantees and their assumptions before quoting asymptotics. |
-| What do the numerical results establish? | Section 13, `sec:numerics`; `eq:recursion`. Read the cutoff budget, normalization convention, and distinction between trial overlaps and optimized-fidelity theorems. |
-| Which ingredients are established prior work, and what physical implementations are covered? | Section 14, `sec:discussion`, and the primary bibliography. The coherent excitation-dependent jump is a mathematical coupling model; rate equations alone do not establish its implementation. |
+| What is optimized, and how is a conditional sector normalized? | [Fidelity definition](science/model.md#eq-fidelitydef) |
+| Why does a large mode occupation fail to certify a whole Fock pulse? | [Model](science/model.md) and [interpretation](science/interpretation.md) |
+| Which pulse attains the native scaling, and what does its variational optimality mean? | [Explicit pulse](science/native_emission.md#eq-pulse) and [constructive bound](science/native_emission.md#sec-lower) |
+| How can one upper bound every temporal mode? | [Uniform photon-count argument](science/native_emission.md#sec-upper) |
+| Which excitation limits give vanishing or high fidelity? | [Partial-source regimes](science/partial_excitation.md#sec-partial) |
+| Can unobserved optical loss remove the modal ceiling? | [Uniform survivor theorem](science/attenuation.md#eq-survivor) |
+| Does native local-loss conditioning have an acceptance cost? | [Exact sector probability](science/local_loss.md#eq-localprob) and [strong conditioning](science/local_loss.md#eq-strongp) |
+| What does a timing record and consumed prefix buy? | [Prefix identity](science/prefix_detection.md#eq-prefixidentity) and [imperfection law](science/prefix_detection.md#eq-prefixcost) |
+| Which restricted controls preserve or worsen the optimum? | [Phase and clock result](science/control_restrictions.md#sec-phases) |
+| What is required for exact Fock factorization? | [Rate and phase criterion](science/exact_fock_control.md#eq-exactcriterion) |
+| Can fidelity approach one without the exact-emission time penalty? | [Finite-parameter construction](science/capped_control.md#sec-capped) |
+| What are acceptance, conditional fidelity and accepted time under local loss? | [Loss bounds](science/capped_control.md#eq-accbounds), [conditional fidelity](science/capped_control.md#eq-lossf), and [accepted time](science/capped_control.md#eq-acceptedtime) |
+| What do the calculations establish? | [Numerical account](science/numerical_checks.md) and [verification scope](verification/README.md) |
 
-## Single educational anchor
+## Essential scientific distinctions
 
-- [Kiilerich and Mølmer, Quantum interactions with pulses of radiation](https://doi.org/10.1103/PhysRevA.102.023717), Physical Review A 102, 023717 (2020).
-- [Open arXiv version](https://arxiv.org/abs/2003.04573).
-
-Use Sections II A–C and III through the bridge guide. They supply the quantum input-output and selected-output-mode foundations. The collective-emission fidelity bounds and resource statements are developed in this repository. The primary research bibliography remains available for attribution without expanding the single-anchor teaching route into a prerequisite reading list.
-
-## Reproduction
-
-- [Verification entry point](verification/check_fidelity.py): run `python3 verification/check_fidelity.py` from the repository root; add `--json` for machine-readable residuals and cutoff budgets.
-- [Calculation implementation](verification/fidelity.py): normalized Dicke-family trial modes, ordered-amplitude recursion, loss probabilities, and hypergeometric weights.
-- [Dependencies](requirements.txt) and [Makefile](Makefile): `make check` runs the consistency checks; `make pdf` rebuilds the compiled theory from its source.
-
-## Interpretation and teaching
-
-Preserve the separation between mean mode occupation, density-matrix purity, normalized conditional Fock fidelity, photon-number probability, and unconditional target yield. A large lower bound is not an exact optimum, and an asymptotic statement is not a finite-size equality. Identify which loss channel and allowed controls each claim assumes.
-
-For a requested tutorial, follow the map in order and use the protocol under `Learning map and tutoring` in AGENTS.md. Keep the common targets stable while adapting explanations within a milestone. Keep session attempts and progress separate from the public scientific map, and do not infer a pass from a continuation request.
+- Fock fidelity is a squared full-state overlap, not overlap amplitude,
+  density-matrix purity or dominant-mode occupation.
+- Keep sector probability, normalized conditional fidelity and unconditional
+  target yield separate. A sector selection does not supply an operational
+  herald without suitable monitoring or a success flag.
+- M physical emitters with n symmetric excitations differ from a chosen subset
+  of excited emitters. Real effective M in the local-loss kernel is a
+  distributional parameter, not a fractional emitter count.
+- The native theorem determines N^(-1/2) and bounding constants, not an exact
+  prefactor. State dilute, fixed-fraction and near-inversion limits separately.
+- Uniform optical attenuation gives reduced states of the ideal field.
+  An actual local atomic jump can leave the symmetric spin sector.
+- Prefix detection consumes photons, and the target mode uses the recorded
+  time origin. The detector/latency formula concerns a specified nominal
+  photon number and stopping rule.
+- Common rate shaping preserves the ideal problem only through the stated
+  complete clock transformation. Fixed physical local loss changes that case.
+- Exact factorization under a rate cap and a sequence of fidelities approaching
+  one are different requirements.
+- The capped construction requires a single coherent output jump. Separate
+  rate engineering or measured classical feedback does not alone implement it.
+- Accepted completion time is conditional within a run; it is not a retry
+  throughput or heralding-latency claim.
+- Exact finite identities and floating-point benchmarks support the documented
+  calculations. The analytical proofs establish uniform and asymptotic results.
