@@ -13,19 +13,19 @@ extends to $`n`$ symmetric excitations in $`M`$ emitters: near full
 inversion the fidelity is $`\Theta(\sqrt{(M-n+1)/M})`$, whereas it
 tends to one when $`n/M\to0`$. Uniform attenuation retains a
 conditional ceiling of order $`k^{-1/2}`$ for $`k`$ surviving photons,
-and at fixed transmission the best unconditional photon-number and
-mode target has yield $`\Theta(N^{-1})`$. Independent local decay
+and at fixed transmission $`0\lt\eta\lt1`$ the best unconditional
+photon-number and mode target has yield $`\Theta(N^{-1})`$. Independent local decay
 instead produces a different exact conditional kernel and a
 polynomial all-photon yield at fixed loss ratio. Diagonal collective
 phases and common rate shaping cannot improve the ideal modal
 fidelity. Detecting and consuming a prefix gives an exact resource
 law, with explicit detection-efficiency and switching-delay costs.
 Exact Fock emission from a coherent Markov ladder requires bosonic
-rates and separable phases; under a native-rate cap exact purity is
-slow. This exactness restriction is singular: a capped,
+rates and separable phases; under a native-rate cap exact Fock
+factorization is slow. This exactness restriction is singular: a capped,
 excitation-dependent coherent coupling achieves fidelity tending to
 one at the native order of completion time, with polynomial
-all-photon acceptance at fixed local loss. The control construction
+all-photon acceptance at fixed local-loss ratio. The control construction
 specifies a mathematical coupling model rather than an experimental
 implementation.
 
